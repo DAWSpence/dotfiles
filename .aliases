@@ -4,6 +4,10 @@ alias clr='clear'
 
 alias cl="clear"
 
+alias cls="clear"
+
+alias cldir="rm -rfv ./*"
+
 alias cd1="cd .."
 
 alias cd2="cd ../.."
@@ -17,10 +21,6 @@ alias cd5="cd ../../../../.."
 
 #list dirs
 alias l="ls"
-
-alias l='ls -lAh'
-
-alias ls="ls -a"
 
 alias la="ls -a"
 
@@ -111,6 +111,6 @@ alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias most='du -hsx * | sort -rh | head -10'
 
 
-
 #clean neovim dirs
-alias nclean='rm -rfv {$HOME/.cache/nvim/, $HOME/.local/state/nvim/, $HOME/.local/share/nvim/, $HOME/.config/nvim/*, $HOME/.config/nvim/.*}'
+alias ndistclean='rm -rfv $HOME/.cache/nvim/ $HOME/.local/state/nvim/ $HOME/.local/share/nvim/ $HOME/.config/nvim/* $HOME/.config/nvim/.*'
+alias nclean="rm -rfv $HOME/.config/nvim/* $HOME/.config/nvim/.*"  
