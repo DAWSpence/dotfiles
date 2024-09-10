@@ -1,18 +1,18 @@
-if [-d $HOME/$XDG_CONFIG_HOME]; then
+if [ ! -d $HOME/$XDG_CONFIG_HOME ]; then
     mkdir -v $HOME/.config
 
 
-if [-d $HOME/$XDG_CACHE_HOME]; then
+elif [ ! -d $HOME/$XDG_CACHE_HOME ]; then
     mkdir -v $HOME/.cache
 
 
-if [-d $HOME/$XDG_DATA_HOME]; then
+elif [ ! -d $HOME/$XDG_DATA_HOME ]; then
     mkdir -v -p $HOME/.local/share
 
 
-if [-d $HOME/$XDG_STATE_HOME]; then
+elif [! -d $HOME/$XDG_STATE_HOME ]; then
     mkdir -v $HOME/$XDG_DATA_HOME/state
-
+fi
 
 
 
