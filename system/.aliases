@@ -40,8 +40,6 @@ alias h3="history 30"
 
 alias hgrep='history | grep'
 
-alias gh='history|grep'
-
 
 #shell
 alias :q="exit"
@@ -114,3 +112,7 @@ alias most='du -hsx * | sort -rh | head -10'
 #clean neovim dirs
 alias ndistclean='rm -rfv $HOME/.cache/nvim/ $HOME/.local/state/nvim/ $HOME/.local/share/nvim/ $HOME/.config/nvim/* $HOME/.config/nvim/.*'
 alias nclean="rm -rfv $HOME/.config/nvim/* $HOME/.config/nvim/.*"  
+
+
+#git
+alias fastpush="git add -A && git commit -a --allow-empty-message -m '' && git push"
