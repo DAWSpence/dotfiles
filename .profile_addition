@@ -1,0 +1,6 @@
+source $REPO_PATH/.tmpal
+source $REPO_PATH/.aliases
+source $REPO_PATH/.paths
+source $REPO_PATH/.presets
+
+

@@ -6,3 +6,10 @@ Work in progress
 
 ## neovim
   - neovim config
+
+## vim
+  - basic vim config
+
+## helix
+
+
