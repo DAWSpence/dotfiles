@@ -27,6 +27,35 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-#============================================================
-#USER CONTENT
-#============================================================
+if [ ! -d $HOME/$XDG_CONFIG_HOME ]; then
+    mkdir -v $HOME/.config
+
+
+
+elif [ ! -d $HOME/$XDG_CACHE_HOME ]; then
+    mkdir -v $HOME/.cache
+
+
+
+elif [ ! -d $HOME/$XDG_DATA_HOME ]; then
+    mkdir -v -p $HOME/.local/share
+
+
+
+elif [! -d $HOME/$XDG_STATE_HOME ]; then
+    mkdir -v $HOME/$XDG_DATA_HOME/state
+
+fi
+
+
+if [ -d "$HOME/.chezmoi/chezmoi" ] ; then
+    PATH="$HOME/.chezmoi/chezmoi:$PATH"
+fi
+
+
+
+
+#export EDITOR='vim'
+#export TERM=xterm-256color
+
+

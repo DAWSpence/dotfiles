@@ -1,15 +1,12 @@
 # dotfiles
-Work in progress
 
-## system
-  - linux based config files 
+Run the following script to setup chezmoi and install the dotfiles template. 
 
-## neovim
-  - neovim config
+Warning the dotfiles are incomplete and may not run
 
-## vim
-  - basic vim config
+```bash
 
-## helix
+sh -c setup.sh
 
+```
 
