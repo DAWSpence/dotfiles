@@ -1,69 +1,34 @@
-#VARIABLES
-#===============================================
+NAME=shell-setup
+
+echo "Setting up XDG directories"
+sleep 1
+
+if [ ! -d $HOME/$XDG_CONFIG_HOME ]; then
+    mkdir -v $HOME/.config
 
 
-export GITHUB_USERNAME=DAWSpence
+elif [ ! -d $HOME/$XDG_CACHE_HOME ]; then
+    mkdir -v $HOME/.cache
 
 
-export REPO_NAME=dotfiles
+elif [ ! -d $HOME/$XDG_DATA_HOME ]; then
+    mkdir -v -p $HOME/.local/share
 
 
-#===============================================
+elif [! -d $HOME/$XDG_STATE_HOME ]; then
+    mkdir -v $HOME/$XDG_DATA_HOME/state
+fi
 
+echo "Setting up shell"
+sleep 1
 
+cp -v ./.zshenv $HOME/
+cp -v ./.zhistory $HOME/.config
+cp -v ./.zlogin $HOME/.config
+cp -v ./.zlogout $HOME/.config
+cp -v ./.zprofile $HOME/.config
+cp -v ./.zshrc $HOME/.config
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-mkdir $HOME/.chezmoi
-#export TEMP=$(pwd)
-#===============================================
-echo "Sourcing the new .profile file"
-sleep(1)
-#echo "export REPO_PATH = $TEMP" >> .profile
-#cat .profile_additons >> .profile
-mv -vu ./.profile $HOME/.profile
-
-
-
-#===============================================
-echo "Sourcing the new .profile file"
-sleep(1)
-source $HOME./.profile
-
-
-#===============================================
-echo "Installing and running chezmoi dotfiles manager and using github, this step will need to change if you use a different manager or version control."
-sleep(2)
-
-echo "Current github username: $GITHUB_USERNAME"
-echo "Current repo name: $REPO_NAME"
-
-
-#===============================================
-echo "Installing and running chezmoi dotfiles manager, this step will need to change if you use a different one."
-echo ""
-sleep(2)
-
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.chezmoi
-
-echo "Running chezmoi:"
-echo ""
-sleep(2)
-
-chezmoi init --apply --verbose https://github.com/$GITHUB_USERNAME/$REPO_NAME.git
-
-
-
-
-
+echo "Deleting repo..."
+sleep 1
+rm -rfv ../$NAME/
