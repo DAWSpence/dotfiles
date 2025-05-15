@@ -188,7 +188,10 @@ bindkey '^f' autosuggest-accept
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
+alias drmall='docker rm $(docker ps -aq) 2>/dev/null \
+      && docker image rm $(docker image ls) 2>/dev/null \
+      && docker prune -f 2>/dev/null \
+      && docker volume prune -a -f 2>/dev/null'
 
 
 
