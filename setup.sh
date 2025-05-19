@@ -1,5 +1,3 @@
-NAME=shell-setup
-
 echo "Setting up XDG directories"
 sleep 1
 
@@ -22,13 +20,31 @@ fi
 echo "Setting up shell"
 sleep 1
 
-cp -v ./.zshenv $HOME/
-cp -v ./.zhistory $HOME/.config
-cp -v ./.zlogin $HOME/.config
-cp -v ./.zlogout $HOME/.config
-cp -v ./.zprofile $HOME/.config
-cp -v ./.zshrc $HOME/.config
+#===========================================================================
+mkdir -vp $HOME/.zsh/completions $HOME/.zsh/terminal $HOME/.zsh/themes $HOME/.zsh
 
-echo "Deleting repo..."
+git clone https://github.com/marlonrichert/zsh-autosuggestions.git 
+cp -v zsh-autosuggestions $HOME/.zsh/completions
+
+git clone https://github.com/Tarrasch/zsh-bd.git 
+cp -v zsh-bd $HOME/.zsh/completions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
+cp -v zsh-syntax-highlighting $HOME/.zsh/terminal
+
+git clone https://github.com/jeffreytse/zsh-vi-mode.git 
+cp -v zsh-vi-mode $HOME/.zsh/terminal
+
+git clone https://github.com/sindresorhus/pure.git 
+cp -v pure $HOME/.zsh/themes
+
+
+
+
+echo "Moving files to correct areas"
 sleep 1
-rm -rfv ../$NAME/
+
+#===========================================================================
+cp -v .zshenv $HOME/
+cp -v .zprofile $HOME/.zsh
+cp -v .zshrc $HOME/.zsh
