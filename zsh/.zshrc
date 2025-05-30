@@ -3,28 +3,6 @@
 #===============================================================
 #potential plugins to use
 
-#cp plugin
-#alias finder
-#aliases
-#docker
-#gh
-#git
-#ssh
-#tmux
-#sudo
-#command-not-found
-#kubectl
-#kubectx
-
-
-
-
-
-
-
-
-
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -58,62 +36,76 @@ SAVEHIST=$HISTSIZE
 # #PLUGINS
 # #===============================================================
 
-
 #core
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit ice depth=1 ; zinit light jeffreytse/zsh-vi-mode
 
-##themes
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorphus/pure
+#themes
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
 
+#additional
+zinit snippet OMZP::cp
+zinit snippet OMZP::alias-finder
+zinit snippet OMZP::aliases
+zinit snippet OMZP::docker
+zinit snippet OMZP::gh
+zinit snippet OMZP::git
+zinit snippet OMZP::copyfile
+zinit snippet OMZP::ssh
+ zinit snippet OMZP::tmux
+
+
+
+#===============================================================
+#AUTOLOADS
+#===============================================================
+autoload -Uz compinit && compinit
+autoload -Uz promptinit; promptinit
+autoload -Uz edit-command-line
 
 #===============================================================
 #OPTIONS
 #===============================================================
 
-#setopts
-setopt AUTO_PUSHD           
-setopt PUSHD_IGNORE_DUPS    
-setopt PUSHD_SILENT
 
-setopt appendhistory
-setopt sharehistory
+zinit cdreplay -q
+#setopts
+setopt auto_pushd           
+setopt pushd_ignore_dups    
+setopt pushd_silent
+
+setopt append_history inc_append_history share_history 
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt auto_menu menu_complete 
+setopt auto_param_slash
+setopt no_case_glob no_case_match 
+setopt globdots 
+setopt extended_glob 
+setopt interactive_comments 
+setopt prompt_sp 
+
+
 
 #completion styling
 zstyle ':completion:' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd*' fzf-preview 'ls --color $realpath'
-
-#enable fzf completion
-eval "$(fzf --zsh)"
-
+zstyle ':completion:*' squeeze-slashes false 
 
 _comp_options+=(globdots)
-
-
-#===============================================================
-#AUTOLOADS
-#===============================================================
-autoload -U promptinit; promptinit
-autoload -Uz edit-command-line
-
-
-
 
 #===============================================================
 #PLUGIN OPTIONS
 #===============================================================
-prompt pure
 zmodload zsh/nearcolor
 zstyle :prompt:pure:path color green
 zstyle :prompt:pure:virtualenv color white
@@ -122,16 +114,15 @@ zstyle :prompt:pure:git:branch color white
 
 
 
-
-
-
-
-
 #===============================================================
 #BINDKEYS
 #===============================================================
-bindkey '^f' autosuggest-accept
-
+bindkey '^x' autosuggest-accept
+bindkey "^a" beginning-of-line
+bindkey "^h" backward-word
+bindkey "^l" forward-word
+bindkey "^H" backward-kill-word
+bindkey '^R' fzf-history-widget
 
 
 #===============================================================
@@ -250,8 +241,8 @@ alias most='du -hsx * | sort -rh | head -10'
 
 
 #clean neovim dirs
-alias ndistclean='rm -rfv $HOME/.cache/nvim/ $HOME/.local/state/nvim/ $HOME/.local/share/nvim/ $HOME/.config/nvim/* $HOME/.config/nvim/.*'
-alias nclean="rm -rfv $HOME/.config/nvim/* $HOME/.config/nvim/.*"  
+alias ndistclean='rm -rfv $XDG_CACHE_HOME/nvim/ $XDG_STATE_HOME/nvim/ $XDG_DATA_HOME/nvim/ $XDG_CONFIG_HOME/nvim/* $XDG_CONFIG_HOME/nvim/.*'
+alias nclean="rm -rfv $XDG_CONFIG_HOME/nvim/* $XDG_CONFIG_HOME/nvim/.*"  
 
 
 #git
@@ -259,7 +250,7 @@ alias fastpush="git add -A && git commit -a --allow-empty-message -m '' && git p
 
 
 #docker
-alias drmall='docker rm $(docker ps -aq) 2>/dev/null \
+alias dockermall='docker rm $(docker ps -aq) 2>/dev/null \
       && docker image rm $(docker image ls) 2>/dev/null \
       && docker prune -f 2>/dev/null \
       && docker volume prune -a -f 2>/dev/null'
@@ -269,11 +260,9 @@ alias drmall='docker rm $(docker ps -aq) 2>/dev/null \
 #===============================================================
 
 
-
-
-
 #===============================================================
 #RUN 
 #===============================================================
 #enable fzf completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"

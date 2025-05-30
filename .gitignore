@@ -1,4 +1,0 @@
-**.devcontainer
-docker-setup.sh
-.env
-clean.sh
