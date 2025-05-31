@@ -51,8 +51,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 "=Plugin settings="
 
 "Color scheme"
-" let g:colors_name = "habamax"
-colorscheme slate
+let g:colors_name = "gruvbox"
 set background=dark
 
 
