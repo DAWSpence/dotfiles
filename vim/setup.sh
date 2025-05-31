@@ -2,7 +2,7 @@
 
 cp -u ./.vimrc $HOME
 
-mkdir -p $HOME/.vim/autoload
+mkdir -pv $HOME/.vim/autoload
 
-mkdir -p $HOME/.vim/plugged
+mkdir -pv $HOME/.vim/plugged
 

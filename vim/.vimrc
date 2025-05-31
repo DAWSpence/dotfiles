@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'bkad/CamelCaseMotion'
   Plug 'machakann/vim-highlightedyank'
+  Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -50,7 +51,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 "=Plugin settings="
 
 "Color scheme"
-let g:colors_name = "gruvbox"
+" let g:colors_name = "habamax"
+colorscheme slate
 set background=dark
 
 
@@ -127,7 +129,6 @@ set hidden
 
 "==Basic Mappings=="
 
-
 noremap j gj
 noremap k gk
 
@@ -148,6 +149,9 @@ map <Leader><Space> :let @/=''<CR>
 nnoremap <Leader>g gqap
 xnoremap <Leader>g gqa
 
+noremap <Leader>ww :w<CR>
+noremap <Leader>wq :wq<CR>
+noremap <Leader>q :q!<CR>
 
 nnoremap <Leader>r :%s///g<Left><Left>
 nnoremap <Leader>rc :%s///gc<Left><Left><Left>
