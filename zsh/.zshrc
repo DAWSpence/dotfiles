@@ -51,12 +51,12 @@ zinit light sindresorhus/pure
 zinit snippet OMZP::cp
 zinit snippet OMZP::alias-finder
 zinit snippet OMZP::aliases
-zinit snippet OMZP::docker
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 zinit snippet OMZP::gh
 zinit snippet OMZP::git
 zinit snippet OMZP::copyfile
 zinit snippet OMZP::ssh
- zinit snippet OMZP::tmux
+zinit snippet OMZP::tmux
 
 
 
@@ -265,4 +265,3 @@ alias dockermall='docker rm $(docker ps -aq) 2>/dev/null \
 #===============================================================
 #enable fzf completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(fzf --zsh)"
