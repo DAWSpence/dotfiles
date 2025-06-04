@@ -1,37 +1,38 @@
-[[language]]
-name = "c"
-language-server = "clangd"
 
 # [[language]]
-# name = "cpp"
-# language-server = "clangd"
+# name = "c"
+# language-servers = [ "clangd" ]
+
+# # [[language]]
+# # name = "cpp"
+# # language-server = "clangd"
 
 
-[[language]]
-name = "bash"
-language-server = "bash-language-server"
-roots = [".git", ".bashrc"]
+# [[language]]
+# name = "bash"
+# language-server = "bash-language-server"
+# roots = [".git", ".bashrc"]
 
 
-[[language]]
-name = "cmake"
-language-server = "cmake-language-server"
+# [[language]]
+# name = "cmake"
+# language-server = "cmake-language-server"
 
 
-[[language]]
-name = "make"
+# [[language]]
+# name = "make"
 
 
-[[language]]
-name = "yaml"
-language-server = "yaml-language-server"
+# [[language]]
+# name = "yaml"
+# language-server = "yaml-language-server"
 
 
-[[language]]
-name = "toml"
-language-server = "taplo"
+# [[language]]
+# name = "toml"
+# language-server = "taplo"
 
 
-[[language]]
-name = "rust"
-language-server = "rust-analyzer"
+# [[language]]
+# name = "rust"
+# language-server = "rust-analyzer"

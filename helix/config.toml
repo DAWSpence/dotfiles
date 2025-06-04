@@ -53,17 +53,30 @@ display-inlay-hints = true
 
 #https://github.com/LGUG2Z/helix-vim
 
+[keys.normal."space"]
+w = ":w"
+q = ":q!"
+x = ":wq"
+s = ":write-all"
+f = ":format"
+r = ":reload"
+l = ":toggle lsp.display-inlay-hints"
+b = ":buffer-close"
+
+
+[keys.insert."space"]
+"C-s" = ":w"  
+"C-c" = "normal_mode"  
+
+[keys.select."space"]
+"f" = ":format"
+"a" = "code_action"
+
+
+
+
+
 [keys.normal]
-# Quick iteration on config changes
-"space w" = ":w"
-"space q" = ":q!"
-"space x" = ":wq"
-"space s" = ":write-all"
-"space f" = ":format"
-"space r" = ":reload"
-"space d" = ":diagnostics"
-"space l" = ":toggle lsp.display-inlay-hints"
-"space b" = ":buffer-close"
 
 C-o = ":config-open"
 C-r = ":config-reload"
@@ -225,12 +238,3 @@ P = "paste_clipboard_before"
 
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
-
-
-[keys.select]
-"space f" = ":format"
-"space a" = "code_action"
-
-[keys.insert]
-"C-s" = ":w"  # Save from insert mode
-"C-c" = "normal_mode"  # Easy way to exit insert mode (like Vim)

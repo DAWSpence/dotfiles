@@ -1,13 +1,15 @@
 return {
 
-  --Catppuccin  
-  {
-    "catppuccin/nvim", 
-    name = "catppuccin",
-    config = function()
-        require("config-nvim.catppuccin")
-    end
+  --Tokyo night dark  
+{
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    vim.cmd[[colorscheme tokyonight-night]]
   },
+}
+
 
   -- Mason  
   {
@@ -26,9 +28,13 @@ return {
 {
   "folke/which-key.nvim",
     event = "VeryLazy",
+
     config = function()
-      require("config-nvim.which-key")
+      require("which-key").setup({
+        notify=false
+      })
     end,
+
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -58,7 +64,6 @@ return {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      -- 'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lua',
       'rafamadriz/friendly-snippets',

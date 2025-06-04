@@ -1,79 +1,45 @@
 --BASIC KEYBINDINGS--
-
---Better window navigation
-nm('<C-h>','<C-w><C-h>')
-nm('<C-l>','<C-w><C-l>')
-nm('<C-j>','<C-w><C-j>')
-nm('<C-k>','<C-w><C-k>')
-
---Clear highlights with esc
-nm('<Esc>','<cmd>nohlsearch<CR>')
+local map = vim.keymap.set
+local mapopts=vim.api.nvim_set_keymap
+local opts={noremap-true,slient=true}
 
 --Better navigation
-nm('j','gj')
-nm('k','gk')
-nm('<Down>','gj')
-nm('<Up>','gk')
-nm('<S-Tab>','<C-w>w')
-im('<Down>','<C-o>gj')
-im('<Up>','<C-o>gk')
+mapopts('n','j','gj',opts)
+mapopts('n','k','gk',opts)
+mapopts('n','<Down>','gj',opts)
+mapopts('n','<Up>','gk',opts)
+mapopts('n','<S-Tab>','<C-w>w',opts)
+mapopts('i','<Down>','<C-o>gj',opts)
+mapopts('i','<Up>','<C-o>gk',opts)
 
 --Cursor at bottom of visual select
-vm('y','ygv<Esc>')
+mapopts('v','y','ygv<Esc>',opts)
+
+
+--Better window navigation
+mapopts('n','<C-h>','<C-w><C-h>',opts)
+mapopts('n','<C-l>','<C-w><C-l>',opts)
+mapopts('n','<C-j>','<C-w><C-j>',opts)
+mapopts('n','<C-k>','<C-w><C-k>',opts)
+
+map('n','<leader>nh',':nohl<CR>',{desc="Clear highlights"})
+map('n','<leader>=','<C-a>',{desc="Increment number"})
+map('n','<leader>-','<C-x>',{desc="Decrement number"})
+
+map('n','<leader>sv','<C-w>v',{desc="Split vertically"})
+map('n','<leader>sh','<C-w>s',{desc="Split horizontally"})
+map('n','<leader>se','<C-w>=',{desc="Split equal"})
+map('n','<leader>sq','<cmd>close<CR>',{desc="Close split"})
 
 
 
+--Tabs
 
-
-
---WHICH KEY--
-
-local wk = require("which-key")
-
---Global
-wk.register(
-    {
-    ["K"] = {"<cmd>lua vim.lsp.buf.hover()<cr>", "Hover information"},
-    ["<leader>o"] = {"<cmd>Telescope find_files<cr>", "Find files"},
-    ["<leader>p"] = {"<cmd>Telescope oldfiles<cr>", "Previous files"},
-    ["<leader>f"] = {"<cmd>Telescope find_files<cr>", "Find in files"},
-    ["gd"] = {"<cmd>lua vim.lsp.buf.definition()<cr>", "Go to declaration" },
-    ["gr"] = {"<cmd>Telescope lsp_references<cr>", "Go to references"},
-    }
-
-    )
-
-
--- LSP 
-wk.register({
-l = {
-    name = "LSP",
-    ["r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol" },
-    ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-}
-}, { prefix = "<leader>" })
-
-
--- Telescope 
-wk.register({
-t = {
-    name = "Telescope",
-    t = {"<cmd>Telescope<cr>", "Open Telescope"},
-    p = {"<cmd>Telescope oldfiles<cr>", "Oldfiles"},
-    s = {"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace symbols"},
-    j = {"<cmd>Telescope jumplist<cr>", "Jumplist"},
-    b = {"<cmd>Telescope buffers<cr>", "Buffers"},
-    q = {"<cmd>Telescope quickfix<cr>", "Quickfix list"},
-    r = {"<cmd>Telescope resume<cr>", "Previous Telescope window"},
-    o = {"<cmd>Telescope find_files<CR>", "Find files"},
-    g = {
-    name = "Git",
-    b = {"<cmd>Telescope git_branches<cr>", "Git branches"},
-    o = { "<cmd>Telescope git_files<cr>", "Git files"},
-    }
-}
-}, { prefix = "<leader>"})
-
+map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) 
+map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) 
+map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) 
+map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
+map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) 
 
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

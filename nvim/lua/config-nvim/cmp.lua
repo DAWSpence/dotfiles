@@ -1,12 +1,13 @@
 local cmp = require('cmp')
-
 cmp.setup{
-  -- Mappings for cmp
+
   mapping = {
 
     -- Autocompletion menu
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
+
     ['<CR>'] = cmp.config.disable,                      -- Turn off autocomplete on <CR>
+
     ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Turn on autocomplete on <C-y>
 
     -- Use <C-e> to abort autocomplete
