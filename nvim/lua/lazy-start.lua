@@ -20,7 +20,7 @@ return {
       "neovim/nvim-lspconfig",
     },
     config = function()
-      require "config-nvim.mason"
+      require "plugins.mason"
     end
   },
 
@@ -51,7 +51,7 @@ return {
       "ahmedkhalf/project.nvim",
     },
     config = function()
-      require "config-nvim.telescope"
+      require "plugins.telescope"
     end
   },
 
@@ -69,7 +69,7 @@ return {
       'rafamadriz/friendly-snippets',
     },
     config = function()
-      require "config-nvim.cmp"
+      require "plugins.cmp"
     end
   },
 
@@ -78,7 +78,7 @@ return {
     'lewis6991/gitsigns.nvim',
     lazy = false,
     config = function()
-      require "config-nvim.gitsigns"
+      require "plugins.gitsigns"
     end
   },
 
@@ -90,7 +90,7 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     config = function()
-      require "config-nvim.treesitter"
+      require "plugins.treesitter"
     end
   },
 
@@ -99,7 +99,7 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function ()
-      require("config-nvim.mini")
+      require("plugins.mini")
     end
   },
 
@@ -108,7 +108,7 @@ return {
   {'akinsho/toggleterm.nvim',
     version = "*",
     config = function ()
-      require ("config-nvim.toggleterm")
+      require ("plugins.toggleterm")
     end
   },
 
