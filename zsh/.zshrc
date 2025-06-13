@@ -2,6 +2,7 @@
 #INIT
 #===============================================================
 #potential plugins to use
+#zmodload zsh/zprof
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -63,7 +64,13 @@ zinit snippet OMZP::tmux
 #===============================================================
 #AUTOLOADS
 #===============================================================
-autoload -Uz compinit && compinit
+autoload -Uz compinit 
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
 autoload -Uz promptinit; promptinit
 autoload -Uz edit-command-line
 
@@ -265,3 +272,4 @@ alias dockermall='docker rm $(docker ps -aq) 2>/dev/null \
 #===============================================================
 #enable fzf completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#zprof

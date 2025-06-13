@@ -14,3 +14,9 @@ gitsigns.setup({
     ignore_whitespace = false,
   },
 })
+
+
+-- local function git_check()
+--   if vim.fn.systemlist('get')
+
+-- end

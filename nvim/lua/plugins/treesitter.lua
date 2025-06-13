@@ -1,17 +1,20 @@
---[[
-  File: treesitter.lua
-  Description: Configuration of tree-sitter
-  See: https://github.com/tree-sitter/tree-sitter
-]]
 require'nvim-treesitter.configs'.setup {
-
   -- Needed parsers
   ensure_installed = {
     "lua",
     'vimdoc',
     'vim',
     'markdown',
-    'make'
+    'make',
+    'bash',
+    'c',
+    'cpp',
+    'cmake',
+    'json',
+    'python',
+    'rust',
+    'regex',
+    'yaml',
   },
 
   -- Install all parsers synchronously
