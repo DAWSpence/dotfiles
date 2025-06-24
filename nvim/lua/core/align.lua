@@ -3,8 +3,8 @@ return  {
     config=function()
       require('mini.align').setup({
         mappings={
-          start='a',
-          start_with_preview='A'
+          start='<leader>a',
+          start_with_preview='<leader>A'
         }
       })
     end

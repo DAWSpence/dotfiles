@@ -47,10 +47,33 @@ fi
 
 #setup with stow
 
-#nvim
-stow -v -d ./nvim -t $XDG_CONFIG_HOME -S .
+#envars 
+NVIM=$(pwd)/nvim
+VIM=$(pwd)/vim
+HELIX=$(pwd)/vim
+TMUX=$(pwd)/vim
+ZSH=$(pwd)/zsh
 
-stow -v -d ./zsh/ -t $HOME -S .
+#will unlike and link them
+
+#===============================================
+#unlink
+
+stow -v -d $NVIM -t $XDG_CONFIG_HOME -D . 2>/dev/null
+stow -v -d $VIM -t $XDG_CONFIG_HOME -D . 2>/dev/null
+stow -v -d $HELIX -t $XDG_CONFIG_HOME -D . 2>/dev/null
+stow -v -d $TMUX -t $XDG_CONFIG_HOME -D . 2>/dev/null
+stow -v -d $ZSH -t $XDG_CONFIG_HOME -D . 2>/dev/null
+
+#===============================================
+#link
+stow -v -d $NVIM -t $XDG_CONFIG_HOME -S .
+stow -v -d $VIM -t $XDG_CONFIG_HOME -S .
+stow -v -d $HELIX -t $XDG_CONFIG_HOME -S .
+stow -v -d $TMUX -t $XDG_CONFIG_HOME -S .
+stow -v -d $ZSH -t $XDG_CONFIG_HOME -S .
+
+
 
 
 

@@ -45,9 +45,9 @@ require('lazy').setup({
 
 ---------------------------------------------------------------------------------------------
 --custom
-  require('custom.toggleterm')
+  require('custom.toggleterm'),
 
-  require('custom.submode')
+  require('custom.submode'),
 
   -- require ( 'custom.debug' ),
 
