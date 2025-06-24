@@ -1,6 +1,7 @@
---------------------------------------------------------------------------------
---Base settings
---------------------------------------------------------------------------------
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- NOTE: You can change these options as you wish!
+--  For more options, you can see `:help option-list`
 
 -- Set associating between turned on plugins and filetype
 vim.cmd[[filetype plugin on]]
@@ -38,6 +39,13 @@ vim.opt.showmode = true
 vim.opt.breakindent = true
 vim.opt.inccommand = 'split'
 vim.opt.hlsearch = true
+vim.opt.mouse = 'a'
+vim.opt.confirm = true
+vim.opt.cursorline = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.list = true
+
+
 
 --------------------------------------------------------------------------------
 -- Autocmds
@@ -55,5 +63,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 
-
--- vim: tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=1
+-- vim: ts=2 sts=2 sw=2 et

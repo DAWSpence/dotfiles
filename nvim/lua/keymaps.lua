@@ -1,6 +1,4 @@
---BASIC KEYBINDINGS--
 local map = vim.keymap.set
-local mapopts=vim.api.nvim_set_keymap
 local opts={noremap=true}
 
 --Better navigation
@@ -36,18 +34,27 @@ map('n','<leader>ww',':w<CR>',{desc="Save file"})
 map('n','<leader>wq',':wq<CR>',{desc="Save file and quit"})
 map('n','<leader>qq',':q!<CR>',{desc="Quit"})
 map('n','<S-q>',':qa!<CR>',{desc="Quit neovim"})
+map('t', '<leader>qt', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+--no highlight
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 
 
 
 
+-- Diagnostic keymaps
+-- map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
---Tabs
-map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) 
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) 
-map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) 
-map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
-map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) 
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
 
+--
+-- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+-- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
+-- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
+-- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
+-- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
--- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
+-- vim: ts=2 sts=2 sw=2 et
