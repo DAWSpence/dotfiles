@@ -42,12 +42,15 @@ require('lazy').setup({
 
   require ( 'core.leap' ),
 
+  require('core.submode'),
+
+  require('core.cmp')
 
 ---------------------------------------------------------------------------------------------
 --custom
   require('custom.toggleterm'),
 
-  require('custom.submode'),
+  require('custom.alpha')
 
   -- require ( 'custom.debug' ),
 
