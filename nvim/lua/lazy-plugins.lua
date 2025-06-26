@@ -12,8 +12,6 @@ require('lazy').setup({
 
   require ( 'core.conform' ),
 
-  require ( 'core.blink-cmp' ),
-
   require ( 'core.tokyonight' ),
 
   require ( 'core.lualine' ),
@@ -44,13 +42,13 @@ require('lazy').setup({
 
   require('core.submode'),
 
-  require('core.cmp')
+  require('core.cmp'),
 
 ---------------------------------------------------------------------------------------------
 --custom
   require('custom.toggleterm'),
 
-  require('custom.alpha')
+  require('custom.alpha'),
 
   -- require ( 'custom.debug' ),
 
