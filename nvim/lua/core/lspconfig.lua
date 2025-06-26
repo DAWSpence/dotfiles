@@ -32,52 +32,57 @@ return {
                 {},
                 vim.lsp.protocol.make_client_capabilities(),
                 cmp_lsp.default_capabilities()) 
+
       
       vim.api.nvim_create_autocmd('LspAttach', {
         desc='LSP Actions',
         callback=function(event)
-          
-        vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", {buffer=event.event, slient=true, desc="Show LSP references"}) 
 
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=event.event, slient=true, desc="Go to declaration"}) 
-
-        vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {buffer=event.event, slient=true, desc="Show LSP definitions"}) 
-
-        vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", {buffer=event.event, slient=true, desc="Show LSP implementations"}) 
-
-        vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", {buffer=event.event, slient=true, desc="Show LSP type definitions"}) 
-
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {buffer=event.event, slient=true, desc="See available code actions"}) 
-
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {buffer=event.event, slient=true,desc="Smart rename"}) 
-
-        vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", {buffer=event.event, slient=true, desc="Show buffer diagnostics"}) 
-
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, {buffer=event.event, slient=true,desc="Show line diagnostics"}) 
-
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {buffer=event.event, slient=true,desc="Go to previous diagnostic"}) 
-
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {buffer=event.event, slient=true,desc="Go to next diagnostic"}) 
-
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=event.event, slient=true,desc="Show documentation for what is under cursor"}) 
-
-        vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", {buffer=event.event, slient=true,desc="Restart LSP"}) 
+          local map = function(mode, keys, func, desc)
+            mode = mode or 'n'
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          end
 
 
+          map("n", "gR", "<cmd>Telescope lsp_references<CR>", 'Show definition') -- show definition, references
+
+          map("n", "gD", vim.lsp.buf.declaration, 'Goto declaration') -- go to declaration
+
+          map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", 'Shwo definitions') -- show lsp definitions
+
+          map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", 'Show implementations') -- show lsp implementations
+
+          map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", 'Show type definitions') -- show lsp type definitions
+
+          map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, 'Show code actions') -- see available code actions, in visual mode will apply to selection
+
+          map("n", "<leader>rn", vim.lsp.buf.rename, 'Smart rename') -- smart rename
+
+          map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", 'Show diagnostics') -- show  diagnostics for file
+
+          map("n", "<leader>d", vim.diagnostic.open_float, 'Diagnostics for line') -- show diagnostics for line
+
+          map("n", "[d", vim.diagnostic.goto_prev, 'Previous diagnostic') -- jump to previous diagnostic in buffer
+
+          map("n", "]d", vim.diagnostic.goto_next, 'Next diagnositc') -- jump to next diagnostic in buffer
+
+          map("n", "K", vim.lsp.buf.hover, 'Show documentation of attribute') -- show documentation for what is under cursor
+
+          map("n", "<leader>rs", ":LspRestart<CR>", 'Restart LSP') -- mapping to restart lsp if necessary
 
 
 
-      vim.diagnostic.config({
-                -- update_in_insert = true,
-                float = {
-                    focusable = false,
-                    style = "minimal",
-                    border = "rounded",
-                    source = "always",
-                    header = "",
-                    prefix = "",
-                },
-            })
+          vim.diagnostic.config({
+                    -- update_in_insert = true,
+                    float = {
+                        focusable = false,
+                        style = "minimal",
+                        border = "rounded",
+                        source = "always",
+                        header = "",
+                        prefix = "",
+                    },
+                })
 
         
         end
