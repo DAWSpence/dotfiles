@@ -9,6 +9,21 @@ map('n','<Up>','gk',opts)
 map('n','<S-Tab>','<C-w>w',opts)
 map('i','<Down>','<C-o>gj',opts)
 map('i','<Up>','<C-o>gk',opts)
+map("n", "J", "mzJ`z")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map({ "n", "v" }, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+map({ "n", "v" }, "<leader>d", "\"_d")
+
+
+
+
+
+
+
 
 --Cursor at bottom of visual select
 map('v','y','ygv<Esc>',opts)
@@ -38,8 +53,6 @@ map('t', '<leader>qt', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 --no highlight
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
-
 
 
 

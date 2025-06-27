@@ -6,7 +6,7 @@ return {
 
       require('lualine').setup({
         options={
-          theme='onedark',
+          theme='tokyonight',
           component_seperators={left='|',right='|'},
           section_seperators={left='|',right='|'}
         }

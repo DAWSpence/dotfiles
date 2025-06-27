@@ -1,13 +1,5 @@
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
-
--- Set associating between turned on plugins and filetype
 vim.cmd[[filetype plugin on]]
-
 vim.cmd[[autocmd FileType * setlocal formatoptions-=cro]]
-
 vim.cmd[[autocmd VimResized * wincmd =]]
 
 -- opts
@@ -33,18 +25,23 @@ vim.opt.relativenumber=true
 vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 100
 vim.opt.timeoutlen = 300
-vim.opt.updatetime = 250
+vim.opt.updatetime = 50
 vim.opt.signcolumn = 'yes'
 vim.opt.showmode = true
 vim.opt.breakindent = true
 vim.opt.inccommand = 'split'
 vim.opt.hlsearch = true
+vim.opt.incsearch = true
 vim.opt.mouse = 'a'
 vim.opt.confirm = true
 vim.opt.cursorline = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.list = true
-
+vim.opt.guicursor = ""
+vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.colorcolumn="80"
 
 
 --------------------------------------------------------------------------------
