@@ -3,6 +3,9 @@ vim.cmd[[autocmd FileType * setlocal formatoptions-=cro]]
 vim.cmd[[autocmd VimResized * wincmd =]]
 
 -- opts
+
+vim.g.mapleader=' '
+vim.g.maplocalleader=' '
 vim.opt.termguicolors=true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2

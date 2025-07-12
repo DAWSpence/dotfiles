@@ -1,5 +1,11 @@
 return {
   "MagicDuck/grug-far.nvim",
+  --nvim 0.10+
+  version="1.63",
+
+  -- nvim 0.11+
+  -- version="*",
+
   opts = { headerMaxWidth = 80 },
   cmd = "GrugFar",
   keys = {
@@ -18,5 +24,8 @@ return {
       mode = { "n", "v" },
       desc = "Search and Replace",
     },
+
+
+
   },
 }

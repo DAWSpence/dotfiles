@@ -46,8 +46,6 @@ require('lazy').setup({
 
   require ('plugins.winshift'),
 
-  require('plugins.winresize'),
-  
   require('plugins.alpha'),
 
   require('plugins.marks'),
@@ -55,6 +53,8 @@ require('lazy').setup({
   require('plugins.toggleterm'),
 
   require('plugins.mini'),
+
+  require('plugins.grug-far'),
 
 
 ---------------------------------------------------------------------------------------------

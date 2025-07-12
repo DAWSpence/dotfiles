@@ -44,10 +44,10 @@ map('n','<leader>sh','<C-w>s',{desc="Split horizontally"})
 map('n','<leader>se','<C-w>=',{desc="Split equal"})
 map('n','<leader>sq','<cmd>close<CR>',{desc="Close split"})
 
-map("n", "<leader>-", "<cmd>vertical resize +5<cr>") -- make the window biger vertically
-map("n", "<leader>=", "<cmd>vertical resize -5<cr>") -- make the window smaller vertically
-map("n", "<leader>]", "<cmd>horizontal resize +2<cr>") -- make the window bigger horizontally by pressing shift and =
-map("n", "<leader>[", "<cmd>horizontal resize -2<cr>") -- make the window smaller horizontally by pressing shift and -
+map("n", "<leader>[", "<cmd>vertical resize +5<cr>") -- make the window biger vertically
+map("n", "<leader>]", "<cmd>vertical resize -5<cr>") -- make the window smaller vertically
+map("n", "<leader>-", "<cmd>horizontal resize +2<cr>") -- make the window bigger horizontally by pressing shift and =
+map("n", "<leader>=", "<cmd>horizontal resize -2<cr>") -- make the window smaller horizontally by pressing shift and -
 
 --File shortcuts
 -- map('n','<leader>w',':w<CR>',{desc="Save file"})
