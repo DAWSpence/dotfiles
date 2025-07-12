@@ -38,15 +38,13 @@ require('lazy').setup({
 
   require ( 'plugins.move' ),
 
-  require ( 'plugins.winresize' ),
+  -- require ( 'plugins.winresize' ),
 
   require ( 'plugins.barbar' ),
 
   require ('plugins.leap'),
 
   require ('plugins.winshift'),
-
-  -- require('plugins.submode'),
 
   require('plugins.winresize'),
   
@@ -57,9 +55,6 @@ require('lazy').setup({
   require('plugins.toggleterm'),
 
   require('plugins.mini'),
-
-  -- require('plugins.nvim-bqf')
-
 
 
 ---------------------------------------------------------------------------------------------
