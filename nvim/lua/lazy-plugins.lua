@@ -38,8 +38,6 @@ require('lazy').setup({
 
   require ( 'plugins.move' ),
 
-  -- require ( 'plugins.winresize' ),
-
   require ( 'plugins.barbar' ),
 
   require ('plugins.leap'),
@@ -54,7 +52,9 @@ require('lazy').setup({
 
   require('plugins.mini'),
 
-  require('plugins.grug-far'),
+  require('plugins.nvim-spectre'),
+
+  
 
 
 ---------------------------------------------------------------------------------------------
