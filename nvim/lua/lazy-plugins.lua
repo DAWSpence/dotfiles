@@ -2,8 +2,6 @@
 require('lazy').setup({
   'NMAC427/guess-indent.nvim', 
 
-  -- require ( 'plugins.gitsigns' ),
-
   require ( 'lsp.lspconfig' ),
 
   require ('plugins.harpoon'),
@@ -53,6 +51,8 @@ require('lazy').setup({
   require('plugins.mini'),
 
   require('plugins.nvim-spectre'),
+
+  require ('plugins.auto_session')
 
   
 

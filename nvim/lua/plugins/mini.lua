@@ -90,8 +90,8 @@ return {
         config=function()
           require('mini.align').setup({
           mappings={
-            start='<leader><leader>a',
-            start_with_preview='<leader><leader>A'
+            start='<leader>a',
+            start_with_preview='<leader>A'
           }
       })
     end
