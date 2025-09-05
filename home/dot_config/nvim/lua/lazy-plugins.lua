@@ -1,70 +1,60 @@
 
 require('lazy').setup({
-  'NMAC427/guess-indent.nvim', 
+--code
+require( 'code.lspconfig' ),
+require( 'code.cmp' ),
+require( 'code.trouble' ),
+require( 'code.treesitter' ),
 
-  require ( 'lsp.lspconfig' ),
-
-  require ('plugins.harpoon'),
-
-  require(  'lsp.cmp' ),
-
-  require ( 'plugins.which-key' ),
-
-  require ( 'lsp.trouble'),
-
-  require ('plugins.mini'),
-
-  require ( 'plugins.telescope' ),
-
-  require ( 'plugins.conform' ),
-
-  require ( 'plugins.tokyonight' ),
-
-  require ( 'plugins.lualine' ),
-
-  require ( 'plugins.treesitter' ),
-
-  require ( 'plugins.autopairs' ),
-
-  require ( 'plugins.neo-tree' ),
-
-  require ( 'plugins.indent_line' ),
-
-  require ( 'plugins.oil' ),
-
-  require ( 'plugins.surround' ),
-
-  require ( 'plugins.move' ),
-
-  require ( 'plugins.barbar' ),
-
-  require ('plugins.leap'),
-
-  require ('plugins.winshift'),
-
-  require('plugins.alpha'),
-
-  require('plugins.marks'),
-
-  require('plugins.toggleterm'),
-
-  require('plugins.mini'),
-
-  require('plugins.nvim-spectre'),
-
-  require ('plugins.auto_session')
-
-  
+--editor
+require( 'editor.telescope' ),
+require( 'editor.neo-tree' ),
+require( 'editor.conform' ),
+require( 'editor.indent_line' ),
+require( 'editor.oil' ),
+require( 'editor.barbar' ),
+require( 'editor.which-key' ),
+require( 'editor.nvim-spectre' ),
+require( 'editor.toggleterm' ),
+require( 'editor.nvim-spider' ),
+require ( 'editor.arrow' ),
 
 
----------------------------------------------------------------------------------------------
+
+
+
+
+--utils
+require( 'utils.autopairs' ),
+require( 'utils.mini' ),
+require( 'utils.move' ),
+require( 'utils.winshift' ),
+require( 'utils.auto_session' ),
+require( 'utils.indent-o-matic' ),
+require( 'utils.hlsearch' ),
+
+
+
+
+
+--ui
+require( 'ui.lualine' ),
+require( 'ui.alpha' ),
+require( 'ui.tokyonight' ),
+
+
+
+
 --custom
 
-  -- require('custom.todo-comments'),
+-- require( 'custom.todo-comments' ),
+-- require( 'custom.debug' ),
+-- require( 'custom.lint' ),
 
-  -- require ( 'custom.debug' ),
 
-  -- require ( 'custom.lint' ),
+
+
+
 
 }
 
