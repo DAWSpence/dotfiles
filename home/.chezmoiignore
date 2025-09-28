@@ -1,0 +1,6 @@
+~/.config/nvim/lazy-lock.json
+~/.config/nvim/lazyvim.json
+~/.config/gh/hosts.yml
+*.git
+~/.config/chezmoi/*
+~/.config/dconf/*
