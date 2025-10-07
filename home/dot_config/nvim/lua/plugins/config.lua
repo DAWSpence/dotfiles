@@ -1,4 +1,7 @@
+--this is where we config lazyvim plugins, user plugins are configured in their respective files.
 return {
+
+
   {
     "folke/snacks.nvim",
     opts = {
@@ -20,6 +23,8 @@ return {
     },
   },
 
+
+
   {
     "saghen/blink.cmp",
     opts = {
@@ -33,13 +38,11 @@ return {
         ["<C-n>"] = { "scroll_documentation_down", "fallback" },
         ["<C-p>"] = { "scroll_documentation_up", "fallback" },
       },
+    },
   },
 
 
 
-
-
-  },
 
   {
     "neovim/nvim-lspconfig",
@@ -47,6 +50,7 @@ return {
       autoformat = false,
     },
   },
+
 
   {
     "rcarriga/nvim-notify",
@@ -56,12 +60,21 @@ return {
     },
   },
 
+
   {
     "akinsho/bufferline.nvim",
     keys={
       { "<S-q>", "<cmd>bdelete!<CR>", desc = "Close buffer" },
     }
   },
+
+
+  {
+    "L3MON4D3/LuaSnip",
+    opts={}
+  },
+
+
 
 
 }
