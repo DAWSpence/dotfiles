@@ -27,10 +27,12 @@ return {
 
   {
     "saghen/blink.cmp",
+
     opts = {
+
       keymap = {
         preset = "enter",
-
+        ["<Tab>"] = { "select_and_accept", "fallback" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
         ['<CR>'] = { 'accept_and_enter', 'fallback' },
         ["<C-j>"] = { "select_next", "fallback_to_mappings" },
@@ -38,7 +40,26 @@ return {
         ["<C-n>"] = { "scroll_documentation_down", "fallback" },
         ["<C-p>"] = { "scroll_documentation_up", "fallback" },
       },
+
+      cmdline = {
+        enabled = true,
+
+        keymap = { 
+          preset = 'inherit'
+         },
+        
+        sources = {
+          'cmdline'
+        },
+
+        completion = { 
+          menu = { auto_show = true }
+         },
+
+      },
+
     },
+    
   },
 
 
@@ -74,7 +95,11 @@ return {
     opts={}
   },
 
-
-
+  {
+    "snacks.nvim",
+    keys = {
+        { "<C-e>", function() Snacks.explorer() end, desc = "File Explorer (VScode)" },
+    }
+  }
 
 }

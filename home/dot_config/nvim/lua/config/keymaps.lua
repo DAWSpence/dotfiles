@@ -4,8 +4,8 @@
 local map = vim.keymap.set
 local del=vim.keymap.del
 local opts = { noremap = true }
-
 --disabled
+
 
 --Better navigation
 map("n", "j", "gj", opts)
@@ -50,6 +50,6 @@ map("n", ";wq", ":wq<CR>", { desc = "Save and quit" })
 map("t", ";tq", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 --no highlight
-map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- vim: ts=2 sts=2 sw=2 et

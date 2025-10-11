@@ -22,6 +22,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   })
 
 
+--Disable formatting for specific filetypes
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { 
+    "*.mk",
+    -- "*.py",
+    -- "*.lua",
+    "*.yml",
+    "*.yaml",
+    "*.sh",
+    "*.bash",
+    "*.zsh",
+    "*.md",
+    "*.toml",
+    "*.json",
+    "*.dockerfile",
+    -- "*.nix"
+   },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
+
+
 
   --Quickfix config
   --https://www.reddit.com/r/neovim/comments/1g7v295/navigating_the_quickfix_list/
