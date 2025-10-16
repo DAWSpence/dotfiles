@@ -4,7 +4,7 @@ return {
   opts = {
     mappings={
       next = "<leader>m]",
-      prev = "<leader>[m"
+      prev = "<leader>m["
     }
   },
 }
