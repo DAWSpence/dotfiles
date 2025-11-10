@@ -35,10 +35,10 @@ map("n", "<S-Down>", "<C-x>", { desc = "Decrement number" })
 
 --windows
 map("n", "<C-q>", ":quit<CR>", { desc = "Quit window" })
-map("n", "<leader>W]", "<cmd>vertical resize +5<cr>")
-map("n", "<leader>W[", "<cmd>vertical resize -5<cr>")
-map("n", "<leader>w]", "<cmd>horizontal resize +2<cr>")
-map("n", "<leader>w[", "<cmd>horizontal resize -2<cr>")
+-- map("n", "<leader>W]", "<cmd>vertical resize +5<cr>")
+-- map("n", "<leader>W[", "<cmd>vertical resize -5<cr>")
+-- map("n", "<leader>w]", "<cmd>horizontal resize +2<cr>")
+-- map("n", "<leader>w[", "<cmd>horizontal resize -2<cr>")
 
 map("n","<leader>[","<C-w>r", {desc = "Swap window left or right"})
 map("n","<leader>]","<C-w>R", {desc = "Swap window up or down"})

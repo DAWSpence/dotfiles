@@ -17,7 +17,7 @@ return {
       notifier = { enabled = false },
       scope = { enabled = true },
       scroll = { enabled = false },
-      statuscolumn = { enabled = false }, -- we set this in options.lua
+      statuscolumn = { enabled = false }, 
       toggle = { map = LazyVim.safe_keymap_set },
       words = { enabled = true },
     },
@@ -34,7 +34,6 @@ return {
         preset = "enter",
         ["<Tab>"] = { "select_and_accept", "fallback" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
-        ['<CR>'] = { 'accept_and_enter', 'fallback' },
         ["<C-j>"] = { "select_next", "fallback_to_mappings" },
         ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-n>"] = { "scroll_documentation_down", "fallback" },
@@ -64,13 +63,12 @@ return {
 
 
 
-
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      autoformat = false,
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     autoformat = false,
+  --   },
+  -- },
 
 
   {
@@ -100,6 +98,86 @@ return {
     keys = {
         { "<C-e>", function() Snacks.explorer() end, desc = "File Explorer (VScode)" },
     }
+  },
+
+
+  --https://github.com/nvim-mini/mini.surround/tree/main
+  {
+    "nvim-mini/mini.surround",
+    opts = {
+        -- Add custom surroundings to be used on top of builtin ones. For more
+        -- information with examples, see `:h MiniSurround.config`.
+        -- basically a table, i.e custom_surroundings = {
+          -- blah blah...
+--        }
+        custom_surroundings = nil,
+
+        -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+        highlight_duration = 100,
+
+        -- Module mappings. Use `''` (empty string) to disable one.
+        mappings = {
+          add = 'ys', -- Add surrounding in Normal and Visual modes
+          delete = 'ds', -- Delete surrounding
+          find = 'yf', -- Find surrounding (to the right)
+          find_left = 'YF', -- Find surrounding (to the left)
+          highlight = 'yh', -- Highlight surrounding
+          replace = 'cs', -- Replace surrounding
+
+          suffix_last = 'l', -- Suffix to search with "prev" method
+          suffix_next = 'n', -- Suffix to search with "next" method
+        },
+
+        -- Number of lines within which surrounding is searched
+        n_lines = 20,
+
+        -- Whether to respect selection type:
+        -- - Place surroundings on separate lines in linewise mode.
+        -- - Place surroundings on each line in blockwise mode.
+        respect_selection_type = false,
+
+        -- How to search for surrounding (first inside current line, then inside
+        -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+        -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
+        -- see `:h MiniSurround.config`.
+        search_method = 'cover',
+
+        -- Whether to disable showing non-error feedback
+        -- This also affects (purely informational) helper messages shown after
+        -- idle time if user input is required.
+        silent = true,
+    }
+  },
+
+
+
+  {
+    "nvim-mini/mini.move",
+
+      opts={
+
+          mappings = {
+            -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+            left = '<M-h>',
+            right = '<M-l>',
+            down = '<M-j>',
+            up = '<M-k>',
+
+            -- Move current line in Normal mode
+            line_left = '<M-h>',
+            line_right = '<M-l>',
+            -- line_down = '[A',
+            -- line_up = ']A',
+        },
+
+        -- Options which control moving behavior
+        options = {
+          -- Automatically reindent selection during linewise vertical move
+          reindent_linewise = true,
+        },
+
+      } 
   }
+
 
 }

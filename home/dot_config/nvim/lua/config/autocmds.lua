@@ -22,28 +22,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   })
 
 
---Disable formatting for specific filetypes
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { 
-    "*.mk",
-    -- "*.py",
-    -- "*.lua",
-    "*.yml",
-    "*.yaml",
-    "*.sh",
-    "*.bash",
-    "*.zsh",
-    "*.md",
-    "*.toml",
-    "*.json",
-    "*.dockerfile",
-    -- "*.nix"
-   },
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
+
 
 
 

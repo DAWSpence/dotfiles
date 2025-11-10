@@ -3,14 +3,18 @@
 -- Add any additional options here
 
 
+--init
 vim.cmd[[filetype plugin on]]
 vim.cmd[[autocmd FileType * setlocal formatoptions-=cro]]
 vim.cmd[[autocmd VimResized * wincmd =]]
 
--- opts
 
+-- opts
+--leader keys
 vim.g.mapleader=' '
 vim.g.maplocalleader=' '
+
+--general ui
 vim.opt.termguicolors=true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
@@ -37,9 +41,13 @@ vim.opt.updatetime = 50
 vim.opt.signcolumn = 'yes'
 vim.opt.showmode = true
 vim.opt.breakindent = true
+
+--search
 vim.opt.inccommand = 'split'
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+
+--mouse and cursor
 vim.opt.mouse = 'a'
 vim.opt.confirm = true
 vim.opt.cursorline = true
@@ -55,5 +63,11 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.colorcolumn="80"
+
+--formatting
+vim.g.autoformat = false
+
+--spellcheck
+vim.opt.spell=false
 
 -- vim: ts=2 sts=2 sw=2 et
