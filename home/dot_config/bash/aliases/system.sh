@@ -26,6 +26,10 @@ alias la='ls -A'
 
 alias l='ls -CF'
 
+alias lsd='ls -hD'
+
+alias lsr='ls -hR'
+
 
 
 #history
@@ -106,20 +110,4 @@ alias totalusage='df -hl --total | grep total'
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 
 alias most='du -hsx * | sort -rh | head -10'
-
-
-#clean neovim dirs
-alias ndistclean='rm -rfv $XDG_CACHE_HOME/nvim/* $XDG_STATE_HOME/nvim/* $XDG_DATA_HOME/nvim/*'
-alias nclean="rm -rfv $XDG_CONFIG_HOME/nvim/* $XDG_CONFIG_HOME/nvim/.*"  
-
-
-#git
-alias fastpush="git add -A && git commit -a --allow-empty-message -m '' && git push"
-
-
-#docker
-alias dockermall='docker rm $(docker ps -aq) 2>/dev/null \
-      && docker image rm $(docker image ls) 2>/dev/null \
-      && docker prune -f 2>/dev/null \
-      && docker volume prune -a -f 2>/dev/null'
 

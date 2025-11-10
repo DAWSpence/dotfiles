@@ -1,0 +1,1 @@
+alias tmux-reload="source $XDG_CONFIG_DIR/tmux/tmux.conf"
