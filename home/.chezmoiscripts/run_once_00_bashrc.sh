@@ -13,7 +13,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 #setup bashrc
 
-if [[ ! -f ~/.bashrc ]]; then
+if [[ -f ~/.bashrc ]]; then
   touch ~/.bashrc
   echo 'source $HOME/.config/bash/init.sh' > ~/.bashrc
 
