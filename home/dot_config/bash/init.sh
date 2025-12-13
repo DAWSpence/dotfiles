@@ -86,9 +86,6 @@ source $BASH_CONFIG_DIR/scripts/shellconf.sh
 source $BASH_CONFIG_DIR/scripts/functions.sh
 source $BASH_CONFIG_DIR/scripts/git-prompt.sh
 
-#addtional sources
-source $XDG_CONFIG_HOME/tmux/tmux.conf
-
 #aliases
 source $BASH_CONFIG_DIR/aliases/system.sh
 source $BASH_CONFIG_DIR/aliases/docker.sh
