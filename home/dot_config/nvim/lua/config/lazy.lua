@@ -28,6 +28,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.editor.mini-move" },
 
+    --languages
+    { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.git" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+
+
 
 
 

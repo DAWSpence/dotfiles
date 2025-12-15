@@ -1,6 +1,22 @@
 --this is where we config lazyvim plugins, user plugins are configured in their respective files.
 return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = 
+    { 
+      ensure_installed = { 
+        "git_config",
+        "gitcommit",
+        "git_rebase",
+        "gitignore",
+        "gitattributes",
+        "dockerfile",
+        "cmake",
+        "make"
+       }
 
+    },
+  },
 
   {
     "folke/snacks.nvim",
@@ -11,6 +27,15 @@ return {
         animate = {
           enabled = false,
         },
+
+      -- picker = {
+      --   files = {
+      --     cmd = "find"
+      --     cmd = "rg"
+      --     cmd = "fd"
+      --   }
+      -- },
+
       },
 
       input = { enabled = true },
@@ -76,6 +101,7 @@ return {
     opts = {
       render = "minimal",
       stages = "static",
+      level = 3,
     },
   },
 
@@ -84,6 +110,8 @@ return {
     "akinsho/bufferline.nvim",
     keys={
       { "<S-q>", "<cmd>bdelete!<CR>", desc = "Close buffer" },
+      { "<S-n>", "<cmd>BufferLineMovePrev", desc = "Move buffer prev" },
+      { "<S-m>", "<cmd>BufferLineMoveNext", desc = "Move buffer next" },
     }
   },
 
@@ -117,12 +145,14 @@ return {
 
         -- Module mappings. Use `''` (empty string) to disable one.
         mappings = {
-          add = 'ys', -- Add surrounding in Normal and Visual modes
-          delete = 'ds', -- Delete surrounding
-          find = 'yf', -- Find surrounding (to the right)
-          find_left = 'YF', -- Find surrounding (to the left)
-          highlight = 'yh', -- Highlight surrounding
-          replace = 'cs', -- Replace surrounding
+
+          add = 'gsa', -- Add surrounding in Normal and Visual modes
+          delete = 'gsd', -- Delete surrounding
+          find = 'gsf', -- Find surrounding (to the right)
+          find_left = 'gsF', -- Find surrounding (to the left)
+          highlight = 'gsh', -- Highlight surrounding
+          replace = 'gsr', -- Replace surrounding
+	  update_n_lines = 'gsn', -- Update n_lines
 
           suffix_last = 'l', -- Suffix to search with "prev" method
           suffix_next = 'n', -- Suffix to search with "next" method

@@ -35,10 +35,6 @@ map("n", "<S-Down>", "<C-x>", { desc = "Decrement number" })
 
 --windows
 map("n", "<C-q>", ":quit<CR>", { desc = "Quit window" })
--- map("n", "<leader>W]", "<cmd>vertical resize +5<cr>")
--- map("n", "<leader>W[", "<cmd>vertical resize -5<cr>")
--- map("n", "<leader>w]", "<cmd>horizontal resize +2<cr>")
--- map("n", "<leader>w[", "<cmd>horizontal resize -2<cr>")
 
 map("n","<leader>[","<C-w>r", {desc = "Swap window left or right"})
 map("n","<leader>]","<C-w>R", {desc = "Swap window up or down"})
@@ -48,8 +44,4 @@ map("n", ";q", ":q!<CR>", { desc = "Close file without saving" })
 map("n", ";Q", ":qa!<CR>", { desc = "Quit Neovim" })
 map("n", ";wq", ":wq<CR>", { desc = "Save and quit" })
 map("t", ";tq", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
---no highlight
--- map("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
 -- vim: ts=2 sts=2 sw=2 et
