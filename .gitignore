@@ -8,3 +8,4 @@ debug
 foo.*
 *.log
 data
+**/dot_vim/plugged/*

@@ -4,3 +4,5 @@
 *.git
 ~/.config/chezmoi/*
 ~/.config/dconf/*
+~/.vim/autoload/
+~/.vim/plugged/*
