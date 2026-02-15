@@ -3,4 +3,7 @@
 ~/.config/gh/hosts.yml
 *.git
 ~/.config/chezmoi/*
+~/.config/chezmoi/**
 ~/.config/dconf/*
+~/.vim/plugged/*
+~/.vim/plugged/**
