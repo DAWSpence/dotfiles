@@ -1,3 +1,5 @@
 let g:ctrlp_working_path_mode = 'ca'
-" let g:ctrlp_working_path_mode = 'ra'
+nmap <c-b> :CtrlPBuffer<cr>
+let g:ctrlp_map = '<c-f>'
+
 

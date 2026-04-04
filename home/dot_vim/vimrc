@@ -2,6 +2,7 @@
 let mapleader = "\<Space>" 
 let maplocalleader = ","
 set runtimepath+=$HOME/.vim
+let g:vimruntime = expand("$HOME/.vim")
 
 
 
@@ -45,17 +46,17 @@ call plug#begin('~/.vim/plugged')
   "ui"
   Plug 'vim-airline/vim-airline' 
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'wesQ3/vim-windowswap'
 
   "util"
   Plug 'tpope/vim-commentary'
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'tpope/vim-surround'
   Plug 'bkad/CamelCaseMotion'
   Plug 'machakann/vim-highlightedyank'
   Plug 'wellle/targets.vim'
   Plug 'vim-scripts/AutoComplPop'
   Plug 'matze/vim-move'
-  Plug 'AndrewRadev/splitjoin.vim'
+  Plug 'AndrewRadev/splitjoin.vim',
   Plug 'jiangmiao/auto-pairs'
   Plug 'suy/vim-context-commentstring'
   Plug 'voldikss/vim-floaterm'
@@ -64,6 +65,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-unimpaired'
   Plug 'rhysd/clever-f.vim'
 
+
   Plug 'scrooloose/nerdtree' | 
    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
    \ Plug 'philrunninger/nerdtree-visual-selection'
@@ -71,21 +73,28 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'kshenoy/vim-signature'
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'mhinz/vim-grepper'
-  Plug 'honza/vim-snippets'
   Plug 'tommcdo/vim-exchange'
+  Plug 'tpope/vim-repeat'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   "Languages and files"
-
+  " Plug 'ekalinin/dockerfile.vim'
+  " Plug 'sudar/vim-arduino-syntax'
+  " Plug 'vim-jp/vim-cpp'
+  " Plug 'chr4/nginx.vim'
+  " Plug 'pprovost/vim-ps1'
+  " Plug 'potatoesmaster/i3-vim-syntax'
+  " Plug 'tpope/vim-git'
+  " Plug 'stephpy/vim-yaml'
+  " Plug 'lazywei/vim-matlab'
+  "
 
   "misc"
   Plug 'ConradIrwin/vim-bracketed-paste'
 
 
 
-
 call plug#end()
-
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -95,22 +104,13 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 
 "plugin config files"
-
-func! SourceConfigs(filename)
-  execute "silent source" . $HOME . "/.vim/config/" . a:filename
-endfunc
-
-
-
-
 execute "colorscheme iceberg"
-call SourceConfigs("airline.vim")
-call SourceConfigs("highlight.vim")
-call SourceConfigs("tabular.vim")
-call SourceConfigs("nerd.vim")
-call SourceConfigs("ctrlp.vim")
-call SourceConfigs("visual-multi.vim")
-call SourceConfigs("sneak.vim")
-call SourceConfigs("expand.vim")
+
+let config_paths = globpath(&rtp, "**/config/*.vim", 0,1)
+
+for config in config_paths
+  execute "silent source" . config
+endfor
+
 
 

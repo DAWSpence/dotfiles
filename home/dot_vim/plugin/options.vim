@@ -93,13 +93,6 @@ set scrolloff=100
 set signcolumn=yes
 
 
-"completeopts and tabstop"
-set completeopt=menu,noselect,popup
-
-"no included files for performance"
-set complete-=i
-
-
 set tabstop=4
 
 "no annoying bells"
@@ -158,7 +151,18 @@ set nospell
 
 "enable wildmode"
 set wildmenu 
-set wildmode=full,longest,list
+set wildmode=longest:full,full
+
+"completeopts and tabstop"
+set completeopt=menu,noselect
+
+"no included files for performance"
+set complete-=i
+
+
+if v:version >= 900
+  set wildoptions=tagfile,pum
+endif
 
 
 "dont backup files"
@@ -180,6 +184,9 @@ set nrformats=alpha,octal,hex
 "defien vim hist"
 set history=1024
 
+
+"set highlight search for text searching"
+set hlsearch
 
 
 
@@ -203,7 +210,11 @@ try
     set undodir='./temp/undo'
     set undofile
 catch
+    let temppath = getenv('MYVIMRC')
+    exe "silent !mkdir " . temppath . "/temp/undo" 
 
+    set undodir='./temp/undo'
+    set undofile
 endtry
 
 

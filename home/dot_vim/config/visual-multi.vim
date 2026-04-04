@@ -12,4 +12,3 @@ let g:VM_maps['Add Cursor Up'] = '<S-Up>'
 
 let g:VM_maps['I Next'] = '<C-j>'
 let g:VM_maps['I Prev'] = '<C-k>'
-

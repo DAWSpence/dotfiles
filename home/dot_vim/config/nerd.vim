@@ -22,7 +22,7 @@ let g:NERDTreeGitStatusShowClean = 0
 function! NERDTreeQuit()
 
   redir => buffersoutput
-  silent buffers
+    silent buffers
   redir END
   "                     1BufNo  2Mods.     3File           4LineNo
   let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
@@ -49,9 +49,14 @@ endfunction
 
 autocmd WinEnter * call NERDTreeQuit()
 
+
+
+
 let g:NERDTreeMapChangeRoot =  "`"
 
-noremap <silent> <C-e> :silent! NERDTreeToggle<cr>
-nmap <S-e> :NERDTreeTabsToggle<CR>
-nnoremap <Leader>cn :NERDTreeCWD<CR>
+
+noremap <silent> <Leader>nn :silent! NERDTreeToggle<cr>
+nnoremap <Leader>nc :NERDTreeCWD<CR>
+nmap <leader>nb :NERDTreeFromBookmark 
+nmap <leader>nf :NERDTreeFind<cr>
 
