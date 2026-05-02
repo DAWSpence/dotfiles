@@ -110,6 +110,9 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 
+set grepprg=grep\ -n
+
+
 "hidden buff"
 set hidden
 

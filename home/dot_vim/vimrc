@@ -1,6 +1,6 @@
 "init"
 let mapleader = "\<Space>" 
-let maplocalleader = ","
+let maplocalleader = '\'
 set runtimepath+=$HOME/.vim
 let g:vimruntime = expand("$HOME/.vim")
 
@@ -60,10 +60,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
   Plug 'suy/vim-context-commentstring'
   Plug 'voldikss/vim-floaterm'
-  Plug 'justinmk/vim-sneak'
+  " Plug 'justinmk/vim-sneak'
+
+  Plug 'easymotion/vim-easymotion' |
+    \ Plug 'haya14busa/vim-easyoperator-line' |
+    \ Plug 'haya14busa/vim-easyoperator-phrase' 
+    
+
   Plug 'terryma/vim-expand-region'
   Plug 'tpope/vim-unimpaired'
-  Plug 'rhysd/clever-f.vim'
+  " Plug 'rhysd/clever-f.vim'
 
 
   Plug 'scrooloose/nerdtree' | 
@@ -78,16 +84,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   "Languages and files"
-  " Plug 'ekalinin/dockerfile.vim'
-  " Plug 'sudar/vim-arduino-syntax'
-  " Plug 'vim-jp/vim-cpp'
-  " Plug 'chr4/nginx.vim'
-  " Plug 'pprovost/vim-ps1'
-  " Plug 'potatoesmaster/i3-vim-syntax'
-  " Plug 'tpope/vim-git'
-  " Plug 'stephpy/vim-yaml'
-  " Plug 'lazywei/vim-matlab'
-  "
+  Plug 'ekalinin/dockerfile.vim'
+  Plug 'sudar/vim-arduino-syntax'
+  Plug 'vim-jp/vim-cpp'
+  Plug 'chr4/nginx.vim'
+  Plug 'pprovost/vim-ps1'
+  Plug 'potatoesmaster/i3-vim-syntax'
+  Plug 'tpope/vim-git'
+  Plug 'stephpy/vim-yaml'
+  Plug 'lazywei/vim-matlab'
+
 
   "misc"
   Plug 'ConradIrwin/vim-bracketed-paste'

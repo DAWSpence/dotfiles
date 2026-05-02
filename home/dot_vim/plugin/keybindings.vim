@@ -46,11 +46,21 @@ nnoremap <silent> <leader>ba :call NameFile()<CR>
 " close buffer
 nnoremap <silent> <leader>bd :bd<CR>
 
+"closs all buffers"
+nnoremap <silent> <leader>bD :%bd<CR>
+
 " kill buffer
 nnoremap <silent> <leader>bk :bd!<CR>
 
+
+command! BufCurOnly execute '%bdelete|edit#|bdelete#'
+
+nnoremap <silent> <leader>be ::BufCurOnly<CR>
+
+
+
 " toggle buffer (switch between current and last buffer)
-nnoremap <silent> <leader>bb <C-^>
+nnoremap <silent> <leader>bq <C-^>
 
 
 " " go to next buffer
@@ -77,17 +87,36 @@ noremap <silent> <leader>bx :call setqflist(map(filter(range(1, bufnr('$')), 'bu
 
 
 
-"swap tabs"
 
-"new tab and close tab"
-
-noremap <leader>tn :tabnew +<CR>
-noremap <leader>td :tabnew -<CR>
-noremap <leader>tl :tabclose +<CR>
-noremap <leader>th :tabclose -<CR>
+"open tab to the right and left"
+noremap <leader>tnl :tabnew +<CR>
+noremap <leader>tnh :tabnew -<CR>
 
 "allow window to be opened in new tab"
-noremap <leader>tw <C-w>T<CR>
+noremap <leader>tnw <C-w>T<CR>
+noremap <leader>tnn :tabnew<CR>
+
+
+"delete tab to the right and left"
+noremap <leader>tdl :tabclose +<CR>
+noremap <leader>tdh :tabclose -<CR>
+noremap <leader>tdd :tabclose<CR>
+
+"list tabs"
+noremap <leader> tl :tabs<CR>
+
+
+"move to next tabs"
+noremap ,t[ :tabp 1<CR>
+noremap ,t] :tabn 1<CR>
+
+
+"swap tabs"
+noremap ,T[ :tabm -<CR>
+noremap ,T] :tabm +<CR>
+
+
+
 
 
 nnoremap <Leader>gp gqap
@@ -113,15 +142,8 @@ nnoremap <silent> <leader>Q :qa!<CR>
 nnoremap <silent> <leader>xq :copen<CR>
 nnoremap <silent> <leader>xl :lopen<CR>
 nnoremap <silent> <leader>xj :jumps<CR>
-nnoremap <silent> <leader>xc :clearjumps<CR>
-
-
-
-
-" cmap <C-J> <Plug>CmdlineCompletionBackward
-" cmap <C-K> <Plug>CmdlineCompletionForward
-
-
-
+nnoremap <silent> <leader>xcj :clearjumps<CR>
+nnoremap <silent> <leader>xcq :call setqflist([])<CR>
+nnoremap <silent> <leader>xcl :call setloclist([])<CR>
 
 

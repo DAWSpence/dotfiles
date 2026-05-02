@@ -1,6 +1,6 @@
 
-nmap K <Plug>(expand_region_expand)
-nmap J <Plug>(expand_region_shrink)
+nmap <C-K> <Plug>(expand_region_expand)
+nmap <C-J> <Plug>(expand_region_shrink)
 
 
 "add your custom expansions here"

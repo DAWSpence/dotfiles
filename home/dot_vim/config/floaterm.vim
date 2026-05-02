@@ -1,6 +1,5 @@
-" let g:floaterm_keymap_new = '<c-\>'
-let g:floaterm_keymap_next = ']t'
-let g:floaterm_keymap_next = '[t'
+" let g:floaterm_keymap_next = ']t'
+" let g:floaterm_keymap_next = '[t'
 let g:floaterm_titleposition = 'center'
 let g:floaterm_keymap_toggle = '<c-\>'
 let g:floaterm_height = 0.9

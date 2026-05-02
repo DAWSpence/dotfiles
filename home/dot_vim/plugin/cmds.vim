@@ -2,10 +2,11 @@
 "no annoying comments after space"
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
+"allows one to exit a buffer without needing to press esc"
+autocmd BufEnter * execute "silent echo"
 
 "auto win resize"
 autocmd VimResized * wincmd =
-
 
 
 "jump to prev location in file"
@@ -34,9 +35,6 @@ augroup END
 
 
 
-
-nnoremap <silent> <Leader>s :call RCStripWSBL()<CR>
-
 function! RCStripWSBL()
     let l = line(".")
     let c = col(".")
@@ -48,67 +46,155 @@ endfunction
 
 
 "handy search functions"
+"https://gosukiwi.github.io/vim/2022/04/19/vim-advanced-search-and-replace.html"
 
-xnoremap ,ff :s///g<Left><Left>
-xnoremap ,fr :s///gc<Left><Left><Left>
-
-nnoremap ,Ff :%s///g<Left><Left>
-nnoremap ,Fr :%s///gc<Left><Left><Left>
-
-
-" nnoremap <Leader>rp :vimgrep //g **/* 
-
-func! CustomSearch(mode)
- " 1: search entire project, 
- " 2: search and replace in entire project,
- " 3: search in file and pop loc list,
- " 4: search in folder pop qlist,
- " 5: find and replace in entire folder"
-
-  if a:mode == 1 
-    let l:i = input('Enter search term (find in entire project): ')
-    exec "vimgrep /" . l:i . "/g **/* | cfopen" 
+if !exists('s:latest_greps')
+  let s:latest_greps = {}
+endif
 
 
-  elseif a:mode == 2
-    let l:i = input('Enter search term (find and replace in entire project): ')
-    let l:k = input('Enter replace term (find and replace in entire project): ')
-    exec "vimgrep /" . l:i . "/g **/*"
-    exec "cfdo %s" . l:i . l:k ."/g | update"
 
+function! s:Grep(...) abort
 
-  elseif a:mode == 3
-    let l:i = input("Enter search term in file ")
-    let l:buffer = bufname()
-    exec "lvimgrep /" . l:i . "/g" . l:buffer . " | lopen"
+  let pattern = get(a:, 1, '')
 
+  if pattern == '' | return | endif
 
-  elseif a:mode == 4
-    let l:i = input('Enter search term (find in folder): ')
-    let l:folder = input('Folder (find in folder): ')
-    exec "vimgrep /" . l:i . "/g" . l:folder . " | cfopen" 
+  let s:latest_greps[pattern] = 1
 
+  let path = get(a:, 2, '**/*')
 
-  endif
+  execute 'silent! grep! "' . escape(pattern, '"-') . '" ' . path . ' | redraw! | copen'
 
 endfunction
 
 
 
-nnoremap <Leader>rp :call CustomSearch(1)<CR>
-nnoremap <Leader>rP :call CustomSearch(2)<CR>
-nnoremap <Leader>rf :call CustomSearch(3)<CR>
-nnoremap <Leader>rF :call CustomSearch(4)<CR>
+
+function! s:Replace(original, replacement) abort
+  if a:original == '' || a:replacement == '' | return | endif
+
+  execute 'cfdo %s/' . escape(a:original, '/') . '/' . a:replacement . '/ge'
+endfunction
 
 
-"function that allows one to change into the config dir then back again"
-" function! ConfigDir()
-"
-" endfunction
-"
 
 
-"change to config dir"
-" nnoremap <Leader>vc :call ExecuteCmdline("edit $HOME/.vim") 
+function! LatestGreps(ArgLead, CmdLine, CursorPos)
+  return keys(s:latest_greps)
+endfunction
+
+
+command! -nargs=+ -complete=file Grep silent! call s:Grep(<f-args>)
+command! -nargs=+ -complete=customlist,LatestGreps Replace silent! call s:Replace(<f-args>)
+
+
+
+
+function LocalSearch()
+    let l:i = input("Enter search term in file: ")
+    let l:buffer = bufname()
+    exec "lvimgrep /" . l:i . "/g" . l:buffer . " | lopen"
+endfunction
+
+
+
+"delete buffers to the left"
+function DeleteBufLeft() 
+
+  let currentbuf = bufnr('%')
+  let bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
+  let indx = index(buffers,current)
+
+  if indx <=0
+    return
+  endif
+
+
+  for bf in bufs[0:indx-1]
+    execute 'silent! bdelete' bf
+  endfor
+
+endfunction
+
+
+
+
+"delete buffers to the right"
+function DeleteBufRight() 
+
+  let currentbuf = bufnr('%')
+  let bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
+  let indx = index(buffers,current)
+
+  if indx == -1 || indx == len(bufs) -1
+    return
+  endif
+
+
+  for bf in bufs[indx+1:]
+    execute 'silent! bdelete' bf
+  endfor
+
+endfunction
+
+
+
+
+"delete tabs to the left"
+function DeleteTabLeft()
+    let currtab = tabpagenr()
+
+    if currtab == 1
+      return
+    endif
+
+    for tab in reverse(range(1,currtab -1))
+      execute 'silent! tabclose' . tab
+    endfor
+
+endfunction
+
+
+
+"delete tabs to the left"
+function DeleteTabRight()
+    let currtab = tabpagenr()
+    let lastab = tabpagenr('$')
+
+    if currtab == lastab
+      return
+    endif
+
+    for tab in reverse(range(currtab-1, lastab))
+      execute 'silent! tabclose' . tab
+    endfor
+
+endfunction
+
+
+
+
+
+"keybindings for functions"
+
+xnoremap ,rf :s///g<Left><Left>Lo
+xnoremap ,rr :s///gc<Left><Left><Left>
+
+nnoremap ,rf :%s///g<Left><Left>
+nnoremap ,rr :%s///gc<Left><Left><Left>
+
+
+nnoremap <Leader>rg :Grep<Space>
+nnoremap <silent> <Leader>rp :call feedkeys(':Replace<Space><Tab>', 't')<CR>
+nnoremap <silent> <Leader>rl :call LocalSearch() <CR>
+
+"change binding"
+nnoremap <silent> <Leader>as :call RCStripWSBL()<CR>
+
+nnoremap <silent> <leader>TH :call DeleteTabLeft()<CR>
+nnoremap <silent> <leader>TL :call DeleteTabRight()<CR>
+
+
 
 
