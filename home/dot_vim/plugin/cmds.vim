@@ -102,11 +102,11 @@ endfunction
 "delete buffers to the left"
 function DeleteBufLeft() 
 
-  let currentbuf = bufnr('%')
-  let bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
-  let indx = index(buffers,current)
+  let l:currentbuf = bufnr('%')
+  let l:bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
+  let l:indx = index(bufs,currentbuf)
 
-  if indx <=0
+  if indx <= 0
     return
   endif
 
@@ -123,12 +123,12 @@ endfunction
 "delete buffers to the right"
 function DeleteBufRight() 
 
-  let currentbuf = bufnr('%')
-  let bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
-  let indx = index(buffers,current)
+  let l:currentbuf = bufnr('%')
+  let l:bufs = filter(range(1,bufnr('$')), 'buflisted(v:val)')
+  let l:indx = index(bufs,currentbuf)
 
-  if indx == -1 || indx == len(bufs) -1
-    return
+  if indx == -1 || indx == len(bufs)-1
+    return "No buffs"
   endif
 
 
@@ -176,6 +176,11 @@ endfunction
 
 
 
+
+
+
+
+
 "keybindings for functions"
 
 xnoremap ,rf :s///g<Left><Left>Lo
@@ -196,5 +201,7 @@ nnoremap <silent> <leader>TH :call DeleteTabLeft()<CR>
 nnoremap <silent> <leader>TL :call DeleteTabRight()<CR>
 
 
+nnoremap <silent> <leader>BH :call DeleteBufLeft()<CR>
+nnoremap <silent> <leader>BL :call DeleteBufRight()<CR>
 
 

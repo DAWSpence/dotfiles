@@ -85,7 +85,9 @@ nnoremap <silent> <leader>bv :vnew<CR>
 "populate the quickfix buffers"
 noremap <silent> <leader>bx :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 
-
+"create scratch buffers"
+noremap <silent> <leader>bcv :vnew<CR> 
+noremap <silent> <leader>bch :hnew<CR> 
 
 
 "open tab to the right and left"
@@ -107,8 +109,8 @@ noremap <leader> tl :tabs<CR>
 
 
 "move to next tabs"
-noremap ,t[ :tabp 1<CR>
-noremap ,t] :tabn 1<CR>
+noremap ,t[ :tabp<CR>
+noremap ,t] :tabn<CR>
 
 
 "swap tabs"
