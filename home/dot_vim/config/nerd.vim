@@ -59,4 +59,3 @@ noremap <silent> <Leader>nn :silent! NERDTreeToggle<cr>
 nnoremap <Leader>nc :NERDTreeCWD<CR>
 nmap <leader>nb :NERDTreeFromBookmark 
 nmap <leader>nf :NERDTreeFind<cr>
-

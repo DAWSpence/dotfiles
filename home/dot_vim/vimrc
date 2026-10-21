@@ -3,6 +3,33 @@ let mapleader = "\<Space>"
 let maplocalleader = '\'
 set runtimepath+=$HOME/.vim
 let g:vimruntime = expand("$HOME/.vim")
+let g:sessiondir = expand("~/.vim/sessions")
+
+if !isdirectory(g:sessiondir)
+  call mkdir(g:sessiondir, 'p')
+endif
+
+
+
+"global functions for resizing frames"
+function! g:Vsize(mag)
+
+  let l:amount = 2
+  return "silent vertical resize " . amount * a:mag
+
+endfunction
+
+
+function! g:Hsize(mag)
+
+  let l:amount = 5
+  return "silent resize " . amount * a:mag
+
+endfunction
+
+
+
+
 
 
 

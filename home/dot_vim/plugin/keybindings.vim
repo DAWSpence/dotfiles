@@ -19,17 +19,21 @@ nmap <silent> <leader>wh :split<CR>
 nmap <silent> <leader>wv :vsplit<CR>
 nmap <silent> <leader>wq :quit!<CR>
 nmap <silent> <leader>wo <C-w>o<CR>
-noremap ]w <C-w>r<CR> 
-noremap [w <C-w>R<CR> 
+noremap ]w <C-w>r<CR>
+noremap [w <C-w>R<CR>
 
 
 
 " increase or decrease window height/width, we aren't using keyboards without arrows
-nmap <silent> <C-Down> 2<C-w>-
-nmap <silent> <C-Up> 2<C-w>+
+" nmap <silent> <C-Down> 2<C-w>-
+" nmap <silent> <C-Up> 2<C-w>+
+"
+nmap <silent> <C-Down> :resize -2
+nmap <silent> <C-Up> :resize +2
+
 nmap <silent> <C-Left> :vertical resize -5<CR>
 nmap <silent> <C-Right> :vertical resize +5<CR>
-nmap <silent> <Leader>= <C-w>=<CR> 
+nmap <silent> <Leader>= <C-w>=<CR>
 
 
 "buffers"
@@ -37,20 +41,26 @@ nmap <silent> <Leader>= <C-w>=<CR>
 "create buffer"
 
 function NameFile()
-  let l:i = input("Enter filename ")
-  execute "silent badd " . i
+  try
+    let l:i = input("Enter filename ")
+    execute "silent badd " . i
+  catch 
+  finally
+    execute "silent badd [No Name]"
+  endtry
 endfunction
 
-nnoremap <silent> <leader>ba :call NameFile()<CR>
 
-" close buffer
-nnoremap <silent> <leader>bd :bd<CR>
+nnoremap <silent> <leader>bn :call NameFile()<CR>
+
+" close buffer"
+nnoremap <silent> <leader>bq :bd<CR>
 
 "closs all buffers"
-nnoremap <silent> <leader>bD :%bd<CR>
+nnoremap <silent> <leader>bD :%bd!<CR>
 
-" kill buffer
-nnoremap <silent> <leader>bk :bd!<CR>
+" kill buffer"
+nnoremap <silent> <leader>bd :bd!<CR>
 
 
 command! BufCurOnly execute '%bdelete|edit#|bdelete#'
@@ -60,15 +70,7 @@ nnoremap <silent> <leader>be ::BufCurOnly<CR>
 
 
 " toggle buffer (switch between current and last buffer)
-nnoremap <silent> <leader>bq <C-^>
-
-
-" " go to next buffer
-" nnoremap <silent> <]b :bn<CR>
-"
-" " go to previous buffer
-" nnoremap <silent> [b :bp<CR>
-"
+nnoremap <silent> <leader>bt <C-^>
 
 " list buffers
 nnoremap <silent> <leader>bl :ls<CR>
@@ -86,8 +88,8 @@ nnoremap <silent> <leader>bv :vnew<CR>
 noremap <silent> <leader>bx :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 
 "create scratch buffers"
-noremap <silent> <leader>bcv :vnew<CR> 
-noremap <silent> <leader>bch :hnew<CR> 
+noremap <silent> <leader>bsv :vnew<CR>
+noremap <silent> <leader>bsh :hnew<CR>
 
 
 "open tab to the right and left"
@@ -105,7 +107,7 @@ noremap <leader>tdh :tabclose -<CR>
 noremap <leader>tdd :tabclose<CR>
 
 "list tabs"
-noremap <leader> tl :tabs<CR>
+noremap <leader>tl :tabs<CR>
 
 
 "move to next tabs"
@@ -118,9 +120,7 @@ noremap ,T[ :tabm -<CR>
 noremap ,T] :tabm +<CR>
 
 
-
-
-
+"text formatting"
 nnoremap <Leader>gp gqap
 xnoremap <Leader>ga gqa
 
@@ -136,6 +136,51 @@ nnoremap <silent> <BS> ::let @/=''<CR>
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
+
+"tpope keybindings without bracketed"
+noremap <silent> [a :previous<CR>
+noremap <silent> ]a :next<CR>
+
+noremap <silent> [A :first<CR>
+noremap <silent> ]A :last<CR>
+
+noremap <silent> [b :bprevious<CR>
+noremap <silent> ]b :bnext<CR>
+
+noremap <silent> [B :bfirst<CR>
+noremap <silent> ]B :blast<CR>
+
+noremap <silent> [l :lprevious<CR>
+noremap <silent> ]l :lnext<CR>
+
+noremap <silent> [L :lfirst<CR>
+noremap <silent> ]L :llast<CR>
+
+noremap <silent> [<C-L> :lpfile<CR>
+noremap <silent> ]<C-L> :lnfile<CR>
+
+noremap <silent> [q :cprevious<CR>
+noremap <silent> ]q :cnext<CR>
+
+noremap <silent> [Q :cfirst<CR>
+noremap <silent> ]Q :clast<CR>
+
+noremap <silent> [<C-Q> :cpfile<CR>
+noremap <silent> ]<C-Q> :cnfile<CR>
+
+noremap <silent> [t :tprevious<CR>
+noremap <silent> ]t :tnext<CR>
+noremap <silent> [T :tfirst<CR>
+noremap <silent> ]T :tlast<CR>
+
+noremap <silent> [<C-T> :ptprevious<CR>
+noremap <silent> ]<C-T> :ptnext<CR>
+
+noremap ]] <cmd>call search('[([{<]')<CR>
+noremap [[ <cmd>call search('[([{<]', 'b')<CR>
+
+
+
 "easy quit"
 nnoremap <silent> <leader>q :q!<CR>
 nnoremap <silent> <leader>Q :qa!<CR>
@@ -147,5 +192,3 @@ nnoremap <silent> <leader>xj :jumps<CR>
 nnoremap <silent> <leader>xcj :clearjumps<CR>
 nnoremap <silent> <leader>xcq :call setqflist([])<CR>
 nnoremap <silent> <leader>xcl :call setloclist([])<CR>
-
-

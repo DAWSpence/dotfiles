@@ -1,4 +1,3 @@
-
 nmap <C-K> <Plug>(expand_region_expand)
 nmap <C-J> <Plug>(expand_region_shrink)
 
@@ -18,8 +17,3 @@ let g:expand_region_text_objects = {
       \ 'ip'  :0,
       \ 'ie'  :0, 
       \ }
-
-
-
-
-

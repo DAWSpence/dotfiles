@@ -28,9 +28,3 @@ func! s:get_dir(path) abort
   return dir
 
 endfunc
-
-
-
-
-
-

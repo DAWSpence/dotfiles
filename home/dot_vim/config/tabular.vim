@@ -1,4 +1,3 @@
-
 if !exists(':Tabularize')
     finish "Tabular plugin not loaded"
 else
@@ -10,9 +9,3 @@ else
   vmap <Leader>a\ :Tabularize /\/<CR>
 
 endif
-
-
-
-
-
-

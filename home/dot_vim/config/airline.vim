@@ -28,4 +28,3 @@ endfunction
 call airline#parts#define('linenr', {'function': 'MyLineNumber', 'accents': 'bold'})
 
 let g:airline_section_z = airline#section#create(['%3p%%: ', 'linenr', ':%3v'])
-
