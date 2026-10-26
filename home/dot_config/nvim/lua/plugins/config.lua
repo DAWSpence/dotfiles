@@ -2,9 +2,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = 
-    { 
-      ensure_installed = { 
+    opts =
+    {
+      ensure_installed = {
         "git_config",
         "gitcommit",
         "git_rebase",
@@ -42,7 +42,7 @@ return {
       notifier = { enabled = false },
       scope = { enabled = true },
       scroll = { enabled = false },
-      statuscolumn = { enabled = false }, 
+      statuscolumn = { enabled = false },
       toggle = { map = LazyVim.safe_keymap_set },
       words = { enabled = true },
     },
@@ -59,8 +59,8 @@ return {
         preset = "enter",
         ["<Tab>"] = { "select_and_accept", "fallback" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
-        ["<C-j>"] = { "select_next", "fallback_to_mappings" },
-        ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+        ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-n>"] = { "scroll_documentation_down", "fallback" },
         ["<C-p>"] = { "scroll_documentation_up", "fallback" },
       },
@@ -68,22 +68,22 @@ return {
       cmdline = {
         enabled = true,
 
-        keymap = { 
+        keymap = {
           preset = 'inherit'
          },
-        
+
         sources = {
           'cmdline'
         },
 
-        completion = { 
+        completion = {
           menu = { auto_show = true }
          },
 
       },
 
     },
-    
+
   },
 
 
@@ -206,7 +206,7 @@ return {
           reindent_linewise = true,
         },
 
-      } 
+      }
   }
 
 

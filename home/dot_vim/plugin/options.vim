@@ -105,8 +105,6 @@ set incsearch
 
 set ttimeout
 
-set timeoutlen=1000
-
 set ttimeoutlen=0
 
 
@@ -220,6 +218,20 @@ catch
     set undofile
 endtry
 
+
+
+"netrw, not always installed"
+
+try 
+  let g:netrw_liststyle = 3
+  let g:netrw_clipboard = 0
+  let g:netrw_browse_split = 0
+  let g:netrw_sort_by = "name"
+  let g:netrw_hide = 0
+  let g:netrw_browse_split = 4
+
+catch
+endtry
 
 
 

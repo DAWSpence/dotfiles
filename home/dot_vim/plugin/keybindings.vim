@@ -23,26 +23,20 @@ noremap ]w <C-w>r<CR>
 noremap [w <C-w>R<CR>
 
 
+nmap <silent> <C-Down> :call Hsize(-1)<CR>
+nmap <silent> <C-Up> :call Hsize(1)<CR>
 
-" increase or decrease window height/width, we aren't using keyboards without arrows
-" nmap <silent> <C-Down> 2<C-w>-
-" nmap <silent> <C-Up> 2<C-w>+
-"
-nmap <silent> <C-Down> :resize -2
-nmap <silent> <C-Up> :resize +2
-
-nmap <silent> <C-Left> :vertical resize -5<CR>
-nmap <silent> <C-Right> :vertical resize +5<CR>
+nmap <silent> <C-Left> :call Vsize(-1)<CR>
+nmap <silent> <C-Right> :call Vsize(1)<CR>
 nmap <silent> <Leader>= <C-w>=<CR>
 
 
 "buffers"
 
 "create buffer"
-
 function NameFile()
   try
-    let l:i = input("Enter filename ")
+    let l:i = input("Enter filename: ")
     execute "silent badd " . i
   catch 
   finally
@@ -76,7 +70,8 @@ nnoremap <silent> <leader>bt <C-^>
 nnoremap <silent> <leader>bl :ls<CR>
 
 " list and select buffer
-nnoremap <silent> <leader>bs :ls<CR>:buffer<Space>
+nnoremap <silent> <leader>bs :buffers<CR>:buffer<Space>
+
 
 " horizontal split with new buffer
 nnoremap <silent> <leader>bh :new<CR>
@@ -88,8 +83,30 @@ nnoremap <silent> <leader>bv :vnew<CR>
 noremap <silent> <leader>bx :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 
 "create scratch buffers"
-noremap <silent> <leader>bsv :vnew<CR>
-noremap <silent> <leader>bsh :hnew<CR>
+noremap <silent> <leader>bcv :vnew<CR>
+noremap <silent> <leader>bch :new<CR>
+
+"create a named tab"
+function NameTab(option)
+
+  let l:i = input("Enter tabname: ")
+
+  if a:option == 1
+
+    execute "silent tabnew + " . i
+
+  elseif a:option == 2
+
+    execute "silent tabnew - " . i
+  
+  else 
+
+    execute "silent tabnew " . i
+
+  endif
+
+endfunction
+
 
 
 "open tab to the right and left"
@@ -110,14 +127,9 @@ noremap <leader>tdd :tabclose<CR>
 noremap <leader>tl :tabs<CR>
 
 
-"move to next tabs"
-noremap ,t[ :tabp<CR>
-noremap ,t] :tabn<CR>
-
-
-"swap tabs"
-noremap ,T[ :tabm -<CR>
-noremap ,T] :tabm +<CR>
+"open term buffer"
+noremap <leader>trv :vertical terminal ++norestore<CR>
+noremap <leader>trh :terminal ++norestore<CR>
 
 
 "text formatting"
@@ -168,10 +180,15 @@ noremap <silent> ]Q :clast<CR>
 noremap <silent> [<C-Q> :cpfile<CR>
 noremap <silent> ]<C-Q> :cnfile<CR>
 
-noremap <silent> [t :tprevious<CR>
-noremap <silent> ]t :tnext<CR>
-noremap <silent> [T :tfirst<CR>
-noremap <silent> ]T :tlast<CR>
+noremap <silent> [t :tabp<CR>
+noremap <silent> ]t :tabn<CR>
+noremap <silent> [T :tabfir<CR>
+noremap <silent> ]T :tabl<CR>
+
+noremap <silent> <S-h> :-tabm<CR>
+noremap <silent> <S-m> :+tabm<CR>
+
+
 
 noremap <silent> [<C-T> :ptprevious<CR>
 noremap <silent> ]<C-T> :ptnext<CR>
@@ -192,3 +209,7 @@ nnoremap <silent> <leader>xj :jumps<CR>
 nnoremap <silent> <leader>xcj :clearjumps<CR>
 nnoremap <silent> <leader>xcq :call setqflist([])<CR>
 nnoremap <silent> <leader>xcl :call setloclist([])<CR>
+
+"netrw"
+
+nnoremap <silent> <leader>e :Lexplore<CR>

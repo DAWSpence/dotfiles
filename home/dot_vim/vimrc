@@ -11,23 +11,34 @@ endif
 
 
 
-"global functions for resizing frames"
+"global functions for resizing frames, consistency"
 function! g:Vsize(mag)
 
   let l:amount = 2
-  return "silent vertical resize " . amount * a:mag
+
+  if a:mag > 0
+    execute "silent vertical resize +" . amount 
+  else
+    execute "silent vertical resize -" . amount 
+  endif
 
 endfunction
+
+
+
 
 
 function! g:Hsize(mag)
 
   let l:amount = 5
-  return "silent resize " . amount * a:mag
+
+  if a:mag > 0
+    execute "silent resize +" . amount 
+  else
+    execute "silent resize -" . amount 
+  endif
 
 endfunction
-
-
 
 
 
@@ -77,55 +88,43 @@ call plug#begin('~/.vim/plugged')
 
   "util"
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-surround'
-  Plug 'bkad/CamelCaseMotion'
+  Plug 'machakann/vim-sandwich'
+
+  Plug 'chaoren/vim-wordmotion'
   Plug 'machakann/vim-highlightedyank'
   Plug 'wellle/targets.vim'
   Plug 'vim-scripts/AutoComplPop'
   Plug 'matze/vim-move'
-  Plug 'AndrewRadev/splitjoin.vim',
+  Plug 'AndrewRadev/splitjoin.vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'suy/vim-context-commentstring'
-  Plug 'voldikss/vim-floaterm'
-  " Plug 'justinmk/vim-sneak'
+  Plug 'haya14busa/is.vim'
 
-  Plug 'easymotion/vim-easymotion' |
-    \ Plug 'haya14busa/vim-easyoperator-line' |
-    \ Plug 'haya14busa/vim-easyoperator-phrase' 
-    
-
+  " Plug 'easymotion/vim-easymotion' |
+  "   \ Plug 'haya14busa/vim-easyoperator-line' |
+  "   \ Plug 'haya14busa/vim-easyoperator-phrase' 
+  "
   Plug 'terryma/vim-expand-region'
-  Plug 'tpope/vim-unimpaired'
-  " Plug 'rhysd/clever-f.vim'
 
 
-  Plug 'scrooloose/nerdtree' | 
-   \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-   \ Plug 'philrunninger/nerdtree-visual-selection'
-
-  Plug 'godlygeek/tabular'
+  " Plug 'scrooloose/nerdtree' | 
+  "  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+  "  \ Plug 'philrunninger/nerdtree-visual-selection'
+  "
+  " Plug 'godlygeek/tabular'
   Plug 'kshenoy/vim-signature'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'tpope/vim-repeat'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-  "Languages and files"
-  Plug 'ekalinin/dockerfile.vim'
-  Plug 'sudar/vim-arduino-syntax'
-  Plug 'vim-jp/vim-cpp'
-  Plug 'chr4/nginx.vim'
-  Plug 'pprovost/vim-ps1'
-  Plug 'potatoesmaster/i3-vim-syntax'
-  Plug 'tpope/vim-git'
-  Plug 'stephpy/vim-yaml'
-  Plug 'lazywei/vim-matlab'
-
-
-  "misc"
   Plug 'ConradIrwin/vim-bracketed-paste'
 
-
+  "Languages and files"
+  Plug 'pprovost/vim-ps1'
+  Plug 'tpope/vim-git'
+  Plug 'stephpy/vim-yaml'
+  Plug 'cespare/vim-toml', { 'branch': 'main' }
+  Plug 'elzr/vim-json'
 
 call plug#end()
 

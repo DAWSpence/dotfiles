@@ -28,7 +28,10 @@ endif
 
 augroup rc_strip_wsbl
     autocmd!
-    autocmd BufWritePre * if &modifiable && &modified | call RCStripWSBL() | endif
+    autocmd BufWritePre * |
+          \ if &modifiable && &modified |
+            \ call RCStripWSBL() |
+          \ endif
 augroup END
 
 
@@ -49,12 +52,54 @@ nnoremap ,rf :%s///g<Left><Left>
 nnoremap ,rr :%s///gc<Left><Left><Left>
 
 
+function! s:setup_terminal()
+
+  if &buftype == 'terminal' 
+
+    tnoremap <ESC> <C-w>N
+    tnoremap <C-h> <c-\><C-n><C-w>h
+    tnoremap <C-j> <c-\><C-n><C-w>j
+    tnoremap <C-k> <c-\><C-n><C-w>k
+    tnoremap <C-l> <c-\><C-n><C-w>l
+    tnoremap <C-w> <c-\><C-n><C-w>w
+    inoremap <C-h> <ESC><C-w>h
+    inoremap <C-j> <ESC><C-w>j
+    inoremap <C-k> <ESC><C-w>k
+    inoremap <C-l> <ESC><C-w>l
+    inoremap <C-w> <ESC><C-w>w
+
+  endif
+
+endfunction
+
+"terminal sizes"
+augroup terminal_funcs 
+  autocmd!
+  autocmd TerminalWinOpen * call s:setup_terminal()
+augroup END
+
+
+
+function! s:NetrwMappings()
+
+  nnoremap <buffer> <C-h> <C-w>h
+  nnoremap <buffer> <C-j> <C-w>j
+  nnoremap <buffer> <C-k> <C-w>k
+  nnoremap <buffer> <C-l> <C-w>l
+  nnoremap <buffer> <leader>q :Lexplore<CR>
+
+endfunction
+
+
+augroup NetrwMappings
+  autocmd!
+  autocmd FileType netrw call s:NetrwMappings()
+augroup END
 
 
 
 "===================================================================="
 "adding some of tpopes code here instead of needing vim bracketed, has features I dont need"
-
 
 
 "move line count spaces up or down"
@@ -250,21 +295,11 @@ nnoremap <Leader>rg :Grep<Space>
 nnoremap <silent> <Leader>rp :call feedkeys(':Replace<Space><Tab>', 't')<CR>
 nnoremap <silent> <Leader>rl :call LocalSearch() <CR>
 
+" end of quickfix replacements"
 
 
-"end of quickfix replacements"
-"
-" augroup terminal_funcs 
-"   autocmd!
-"   autocmd TerminalWinOpen * 
-"    \ if &buftype == 'terminal' |
-"    \ tnoremap <buffer> <C-Down> :resize -2 | 
-"    \ tnoremap <buffer> <C-Up> 2<C-w>+ 
-"
-"
-"
 
-"increase terminal sizes"
+
 
 
 
@@ -344,10 +379,12 @@ endfunction
 
 nnoremap <silent> <leader>TDH :call DeleteTabLeft()<CR>
 nnoremap <silent> <leader>TDL :call DeleteTabRight()<CR>
+nnoremap <silent> <leader>TDD :call DeleteTabLeft() \| call DeleteTabRight()<CR>
 
 
 nnoremap <silent> <leader>BDH :call DeleteBufLeft()<CR>
 nnoremap <silent> <leader>BDL :call DeleteBufRight()<CR>
+nnoremap <silent> <leader>BDD :call DeleteBufLeft() \| call DeleteBufRight()<CR>
 
 
 
@@ -355,26 +392,23 @@ nnoremap <silent> <leader>BDL :call DeleteBufRight()<CR>
 
 function! VimConfig()
 
-  let session_file = g:sessiondir . 'prev_session.vim'
+  let session_file = g:sessiondir . '/prev_session.vim'
 
-  if getcwd() ==# g:vimruntime
+  if getcwd(-1,0) ==# g:vimruntime
 
-    if filereadable(session_file)
+    execute 'source' session_file
 
-      execute 'source' session_file
-
-    else
-
-      return
-
-    endif
+  else
+      
+    execute 'w | mksession!' session_file
+    execute 'edit' g:vimruntime . "/vimrc"
+    execute 'cd' g:vimruntime 
 
   endif
-
-  execute 'mksession!' session_file
-  execute 'cd' g:vimruntime
+  
 
 endfunction
 
 
+nnoremap <silent> <leader>vs :call VimConfig()<CR>
 

@@ -78,8 +78,8 @@ fi
 #shell prompt
 PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'
 PS1='\[\033[0;32m\]\u\[\033[00m\]@\[\033[0;36m\]\h\[\033[00m\]:\[\033[00m\]\w${PS1_CMD1} '
-printf '\e[?12;25h'
-printf '\e[2 q'
+echo -e '\e[5m'
+
 
 #scripts
 source $BASH_CONFIG_DIR/scripts/shellconf.sh
