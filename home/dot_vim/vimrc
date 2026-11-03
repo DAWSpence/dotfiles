@@ -81,15 +81,11 @@ endif
 "Plugin install"
 call plug#begin('~/.vim/plugged')
 
-  "ui"
   Plug 'vim-airline/vim-airline' 
   Plug 'vim-airline/vim-airline-themes'
   Plug 'wesQ3/vim-windowswap'
-
-  "util"
   Plug 'tpope/vim-commentary'
   Plug 'machakann/vim-sandwich'
-
   Plug 'chaoren/vim-wordmotion'
   Plug 'machakann/vim-highlightedyank'
   Plug 'wellle/targets.vim'
@@ -99,27 +95,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
   Plug 'suy/vim-context-commentstring'
   Plug 'haya14busa/is.vim'
-
-  " Plug 'easymotion/vim-easymotion' |
-  "   \ Plug 'haya14busa/vim-easyoperator-line' |
-  "   \ Plug 'haya14busa/vim-easyoperator-phrase' 
-  "
   Plug 'terryma/vim-expand-region'
+  Plug 'voldikss/vim-floaterm'
 
+  Plug 'scrooloose/nerdtree' | 
+   \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+   \ Plug 'philrunninger/nerdtree-visual-selection'
 
-  " Plug 'scrooloose/nerdtree' | 
-  "  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-  "  \ Plug 'philrunninger/nerdtree-visual-selection'
-  "
-  " Plug 'godlygeek/tabular'
+  Plug 'godlygeek/tabular'
   Plug 'kshenoy/vim-signature'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'tommcdo/vim-exchange'
   Plug 'tpope/vim-repeat'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'ConradIrwin/vim-bracketed-paste'
-
-  "Languages and files"
   Plug 'pprovost/vim-ps1'
   Plug 'tpope/vim-git'
   Plug 'stephpy/vim-yaml'

@@ -36,7 +36,7 @@ augroup END
 
 
 
-function! RCStripWSBL()
+function! RCStripWSBL() 
     let l = line(".")
     let c = col(".")
     %s/\s\+$//ge

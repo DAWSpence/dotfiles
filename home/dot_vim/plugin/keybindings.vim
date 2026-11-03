@@ -45,32 +45,28 @@ function NameFile()
 endfunction
 
 
+
 nnoremap <silent> <leader>bn :call NameFile()<CR>
-
-" close buffer"
-nnoremap <silent> <leader>bq :bd<CR>
-
-"closs all buffers"
-nnoremap <silent> <leader>bD :%bd!<CR>
 
 " kill buffer"
 nnoremap <silent> <leader>bd :bd!<CR>
 
-
+"closs all buffers"
 command! BufCurOnly execute '%bdelete|edit#|bdelete#'
 
-nnoremap <silent> <leader>be ::BufCurOnly<CR>
+nnoremap <silent> <leader>bD ::BufCurOnly<CR>
 
-
+"delete selected buffer"
+noremap <silent> <leader>bl :buffers<CR>:bdelete!<Space>
 
 " toggle buffer (switch between current and last buffer)
 nnoremap <silent> <leader>bt <C-^>
 
 " list buffers
-nnoremap <silent> <leader>bl :ls<CR>
+nnoremap <silent> <leader>be :ls<CR>
 
 " list and select buffer
-nnoremap <silent> <leader>bs :buffers<CR>:buffer<Space>
+nnoremap <silent> <leader>bf :buffers<CR>:buffer<Space>
 
 
 " horizontal split with new buffer

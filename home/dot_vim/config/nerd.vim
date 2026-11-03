@@ -16,6 +16,7 @@ let g:NERDTreeGitStatusUseNerdFonts = 0
 let g:NERDTreeGitStatusShowIgnored = 0
 let g:NERDTreeGitStatusUntrackedFilesMode = 'normal'
 let g:NERDTreeGitStatusShowClean = 0
+let g:NERDTreeMapChangeRoot =  "`"
 
 
 
@@ -43,19 +44,27 @@ function! NERDTreeQuit()
     quitall
   endif
 
+endfunction
+
+
+function! NERDCheck()
+
+  if (bufname("%") =~ "NERD_Tree_")
+    noremap <buffer> <leader>q :NERDTreeClose<CR>
+  endif
 
 endfunction
 
 
+
+autocmd BufEnter * call NERDCheck()
 autocmd WinEnter * call NERDTreeQuit()
 
 
 
 
-let g:NERDTreeMapChangeRoot =  "`"
-
-
-noremap <silent> <Leader>nn :silent! NERDTreeToggle<cr>
-nnoremap <Leader>nc :NERDTreeCWD<CR>
-nmap <leader>nb :NERDTreeFromBookmark 
-nmap <leader>nf :NERDTreeFind<cr>
+"keymaps"
+noremap <silent> <Leader>ee :silent! NERDTreeToggle<cr>
+nnoremap <Leader>ec :NERDTreeCWD<CR>
+nmap <leader>eb :NERDTreeFromBookmark 
+nmap <leader>ef :NERDTreeFind<cr>
