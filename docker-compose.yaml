@@ -1,0 +1,27 @@
+services:
+
+  dotfiles:
+
+    build:
+
+      context: .
+      dockerfile: Dockerfile
+
+
+    restart: unless-stopped
+    volumes:
+      - ${SSH_AUTH_SOCK}:/ssh-agent
+      - ${GITHUB_KEY_PRIV}:/root/.ssh/id_ed25519
+      - ${GITHUB_KEY_PUB}:/root/.ssh/id_ed25519.pub
+
+
+
+    environment:
+      GITHUB_REPO: "git@github.com:DAWSpence/dotfiles.git"
+      GITHUB_BRANCH: "main"
+      SSH_AUTH_SOCK: "ssh-agent"
+    
+
+volumes:
+  setup:
+    external: true
