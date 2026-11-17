@@ -23,10 +23,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 
-
-
-
-
   --Quickfix config
   --https://www.reddit.com/r/neovim/comments/1g7v295/navigating_the_quickfix_list/
 

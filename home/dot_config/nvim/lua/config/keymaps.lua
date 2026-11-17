@@ -12,7 +12,6 @@ map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 map("n", "<Down>", "gj", opts)
 map("n", "<Up>", "gk", opts)
-map("n", "<S-Tab>", "<C-w>w", opts)
 map("i", "<Down>", "<C-o>gj", opts)
 map("i", "<Up>", "<C-o>gk", opts)
 map("n", "J", "mzJ`z")
@@ -38,7 +37,7 @@ map("n", "<C-q>", ":quit<CR>", { desc = "Quit window" })
 
 map("n","<leader>[","<C-w>r", {desc = "Swap window left or right"})
 map("n","<leader>]","<C-w>R", {desc = "Swap window up or down"})
- 
+
 --File shortcuts
 map("n", ";q", ":q!<CR>", { desc = "Close file without saving" })
 map("n", ";Q", ":qa!<CR>", { desc = "Quit Neovim" })

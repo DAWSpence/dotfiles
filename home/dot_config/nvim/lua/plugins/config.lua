@@ -57,12 +57,11 @@ return {
 
       keymap = {
         preset = "enter",
-        ["<Tab>"] = { "select_and_accept", "fallback" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
         ["<C-n>"] = { "select_next", "fallback_to_mappings" },
         ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-        ["<C-n>"] = { "scroll_documentation_down", "fallback" },
-        ["<C-p>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-j>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-k>"] = { "scroll_documentation_up", "fallback" },
       },
 
       cmdline = {
