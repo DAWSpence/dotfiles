@@ -36,7 +36,7 @@ augroup END
 
 
 
-function! RCStripWSBL() 
+function! RCStripWSBL()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//ge
@@ -54,9 +54,9 @@ nnoremap ,rr :%s///gc<Left><Left><Left>
 
 function! s:setup_terminal()
 
-  if &buftype == 'terminal' 
+  if &buftype == 'terminal'
 
-    tnoremap <ESC> <C-w>N
+    tnoremap <C-e> <C-w>N
     tnoremap <C-h> <c-\><C-n><C-w>h
     tnoremap <C-j> <c-\><C-n><C-w>j
     tnoremap <C-k> <c-\><C-n><C-w>k
@@ -73,7 +73,7 @@ function! s:setup_terminal()
 endfunction
 
 "terminal sizes"
-augroup terminal_funcs 
+augroup terminal_funcs
   autocmd!
   autocmd TerminalWinOpen * call s:setup_terminal()
 augroup END
@@ -304,7 +304,7 @@ nnoremap <silent> <Leader>rl :call LocalSearch() <CR>
 
 
 "delete buffers to the left"
-function DeleteBufLeft() 
+function DeleteBufLeft()
 
   let l:currentbuf = bufnr('%')
   let l:bufs = filter(range(1,bufnr('%')), 'buflisted(v:val)')
@@ -325,7 +325,7 @@ endfunction
 
 
 "delete buffers to the right"
-function DeleteBufRight() 
+function DeleteBufRight()
 
   let l:currentbuf = bufnr('%')
   let l:bufs = filter(range(1,bufnr('$')), 'buflisted(v:val)')
@@ -399,16 +399,15 @@ function! VimConfig()
     execute 'source' session_file
 
   else
-      
+
     execute 'w | mksession!' session_file
     execute 'edit' g:vimruntime . "/vimrc"
-    execute 'cd' g:vimruntime 
+    execute 'cd' g:vimruntime
 
   endif
-  
+
 
 endfunction
 
 
 nnoremap <silent> <leader>vs :call VimConfig()<CR>
-

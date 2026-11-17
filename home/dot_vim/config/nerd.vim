@@ -4,6 +4,7 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 let NERDTreeShowLineNumbers = 1
 let NERDTreeWinSize = 25
+let NERDTreeShowHidden = 1
 
 let g:nerdtree_vis_confirm_open =0
 let g:nerdtree_vis_confirm_delete =0
@@ -17,7 +18,6 @@ let g:NERDTreeGitStatusShowIgnored = 0
 let g:NERDTreeGitStatusUntrackedFilesMode = 'normal'
 let g:NERDTreeGitStatusShowClean = 0
 let g:NERDTreeMapChangeRoot =  "`"
-
 
 
 function! NERDTreeQuit()
@@ -66,5 +66,5 @@ autocmd WinEnter * call NERDTreeQuit()
 "keymaps"
 noremap <silent> <Leader>ee :silent! NERDTreeToggle<cr>
 nnoremap <Leader>ec :NERDTreeCWD<CR>
-nmap <leader>eb :NERDTreeFromBookmark 
+nmap <leader>eb :NERDTreeFromBookmark
 nmap <leader>ef :NERDTreeFind<cr>

@@ -38,7 +38,7 @@ function NameFile()
   try
     let l:i = input("Enter filename: ")
     execute "silent badd " . i
-  catch 
+  catch
   finally
     execute "silent badd [No Name]"
   endtry
@@ -94,8 +94,8 @@ function NameTab(option)
   elseif a:option == 2
 
     execute "silent tabnew - " . i
-  
-  else 
+
+  else
 
     execute "silent tabnew " . i
 
@@ -197,6 +197,7 @@ noremap [[ <cmd>call search('[([{<]', 'b')<CR>
 "easy quit"
 nnoremap <silent> <leader>q :q!<CR>
 nnoremap <silent> <leader>Q :qa!<CR>
+noremap <silent> :w :w<CR>
 
 "open quick and location lists seperately"
 nnoremap <silent> <leader>xq :copen<CR>
@@ -205,7 +206,3 @@ nnoremap <silent> <leader>xj :jumps<CR>
 nnoremap <silent> <leader>xcj :clearjumps<CR>
 nnoremap <silent> <leader>xcq :call setqflist([])<CR>
 nnoremap <silent> <leader>xcl :call setloclist([])<CR>
-
-"netrw"
-
-nnoremap <silent> <leader>e :Lexplore<CR>

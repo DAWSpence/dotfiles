@@ -1,5 +1,5 @@
 "init"
-let mapleader = "\<Space>" 
+let mapleader = "\<Space>"
 let maplocalleader = '\'
 set runtimepath+=$HOME/.vim
 let g:vimruntime = expand("$HOME/.vim")
@@ -17,9 +17,9 @@ function! g:Vsize(mag)
   let l:amount = 2
 
   if a:mag > 0
-    execute "silent vertical resize +" . amount 
+    execute "silent vertical resize +" . amount
   else
-    execute "silent vertical resize -" . amount 
+    execute "silent vertical resize -" . amount
   endif
 
 endfunction
@@ -33,9 +33,9 @@ function! g:Hsize(mag)
   let l:amount = 5
 
   if a:mag > 0
-    execute "silent resize +" . amount 
+    execute "silent resize +" . amount
   else
-    execute "silent resize -" . amount 
+    execute "silent resize -" . amount
   endif
 
 endfunction
@@ -81,7 +81,7 @@ endif
 "Plugin install"
 call plug#begin('~/.vim/plugged')
 
-  Plug 'vim-airline/vim-airline' 
+  Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'wesQ3/vim-windowswap'
   Plug 'tpope/vim-commentary'
@@ -98,7 +98,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-expand-region'
   Plug 'voldikss/vim-floaterm'
 
-  Plug 'scrooloose/nerdtree' | 
+  Plug 'scrooloose/nerdtree' |
    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
    \ Plug 'philrunninger/nerdtree-visual-selection'
 
@@ -132,6 +132,3 @@ let config_paths = globpath(&rtp, "**/config/*.vim", 0,1)
 for config in config_paths
   execute "silent source" . config
 endfor
-
-
-

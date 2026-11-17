@@ -26,8 +26,8 @@ set ruler
 set expandtab
 
 "list tabs and spaces"
-set list 
-set showbreak=↪\ 
+set list
+set showbreak=↪\
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 
@@ -151,7 +151,7 @@ set nospell
 
 
 "enable wildmode"
-set wildmenu 
+set wildmenu
 set wildmode=longest:full,full
 
 "completeopts and tabstop"
@@ -194,7 +194,7 @@ set hlsearch
 "ignore compiled files"
 set wildignore=*.so,*.swp,*.pyc,*.pyo,*.exe,*.7z
 
-if has("win16") || has("win32") 
+if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
   set renderoptions=type:directx
   set shellslash
@@ -212,27 +212,8 @@ try
     set undofile
 catch
     let temppath = getenv('MYVIMRC')
-    exe "silent !mkdir " . temppath . "/temp/undo" 
+    exe "silent !mkdir " . temppath . "/temp/undo"
 
     set undodir='./temp/undo'
     set undofile
 endtry
-
-
-
-"netrw, not always installed"
-
-try 
-  let g:netrw_liststyle = 3
-  let g:netrw_clipboard = 0
-  let g:netrw_browse_split = 0
-  let g:netrw_sort_by = "name"
-  let g:netrw_hide = 0
-  let g:netrw_browse_split = 4
-
-catch
-endtry
-
-
-
-
