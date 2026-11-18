@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+COPY ./install.sh ${WORKSPACE_DIR}
 
-COPY ./setup/setup.sh ${WORKSPACE_DIR}
+RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts && \
+  chmod a+r ${WORKSPACE_DIR}/.keep
