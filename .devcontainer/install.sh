@@ -17,7 +17,7 @@ case :$PATH: in
 esac
 
 sh -c "$(curl -fsSL https://git.io/chezmoi)" -- -b "$bin_dir"
-sh -c $chezmoi -- init --branch main --apply $GITHUB_NAME 
+$chezmoi init --branch="main" --apply $GITHUB_NAME 
 
 
 

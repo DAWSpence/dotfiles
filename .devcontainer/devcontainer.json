@@ -1,0 +1,44 @@
+{
+  "name": "Dotfiles Test Env",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "forwardPorts": [3000, 8000],
+
+  "workspaceFolder": "/root",
+
+
+  // "mounts": [
+  //   "source=${localWorkspaceFolder}/mount,target=/workspace,type=bind,consistency=cached"
+  // ],
+
+ 
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+
+      "extensions": [
+        "vscodevim.vim",
+        "mads-hartmann.bash-ide-vscode",
+        "jnoortheen.nix-ide",
+        "malmaud.tmux",
+        "romantomjak.go-template",
+        "usernamehw.errorlens"
+      ]
+    }
+  },
+
+  // "runArgs": [
+  //       "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
+  //   ], 
+
+  "containerEnv": {
+    "TERM": "xterm-256color"
+  }
+
+
+}
