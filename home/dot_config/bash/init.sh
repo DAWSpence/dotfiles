@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 #init
 case $- in
 *i*) ;;
@@ -56,11 +58,8 @@ unset MAILCHECK
 set -o vi
 set -o noclobber
 
-# Prepend cd to directory names automatically
 shopt -s autocd 2> /dev/null
-# Correct spelling errors during tab-completion
 shopt -s dirspell 2> /dev/null
-# Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2> /dev/null
 
 # This allows you to bookmark your favorite places across the file system
@@ -74,7 +73,6 @@ shopt -s hostcomplete            >/dev/null 2>&1
 shopt -u mailwarn                >/dev/null 2>&1
 
 shopt -s histappend
-shopt -s checkwinsize
 shopt -s globstar
 
 
@@ -186,17 +184,16 @@ export PATH
 #======================================================================
 #note: use sheldon
 
-eval "$(sheldon --quiet source)"
+# eval "$(sheldon --quiet source)"
 
-#scripts
-source $BASH_CONFIG_DIR/scripts/shellconf.sh
+# #scripts
 source $BASH_CONFIG_DIR/scripts/functions.sh
 source $BASH_CONFIG_DIR/scripts/git-prompt.sh
 
-#addtional sources
-source $XDG_CONFIG_HOME/tmux/tmux.conf
+# #addtional sources
+# source $XDG_CONFIG_HOME/tmux/tmux.conf
 
-#aliases
-source $BASH_CONFIG_DIR/aliases/system.sh
-source $BASH_CONFIG_DIR/aliases/docker.sh
-source $BASH_CONFIG_DIR/aliases/nvim.sh
+# #aliases
+# source $BASH_CONFIG_DIR/aliases/system.sh
+# source $BASH_CONFIG_DIR/aliases/docker.sh
+# source $BASH_CONFIG_DIR/aliases/nvim.sh
